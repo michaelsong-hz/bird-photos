@@ -41,8 +41,8 @@ export default class AlbumImage extends Vue {
   @Prop() image_url!: string;
 
   testAws() {
-    console.log(this.image_url);
-    console.log("testing");
+    // console.log(this.image_url);
+    // console.log("testing");
   }
 }
 </script>

@@ -65,7 +65,7 @@ export default class Album extends Vue {
   created() {
     if ("albumName" in this.$route.params) {
       this.albumToRender = this.$route.params.albumName;
-      console.log(this.albumToRender);
+      // console.log(this.albumToRender);
     }
   }
 }
