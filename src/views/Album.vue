@@ -65,7 +65,10 @@ export default class Album extends Vue {
   created() {
     if ("albumName" in this.$route.params) {
       this.albumToRender = this.$route.params.albumName;
-      // console.log(this.albumToRender);
+      let albumName: string = this.$route.params.albumName;
+      albumName = albumName.charAt(0).toUpperCase() + albumName.slice(1);
+
+      document.title = `Dr Song's Portfolio - ${albumName} Album`;
     }
   }
 }
