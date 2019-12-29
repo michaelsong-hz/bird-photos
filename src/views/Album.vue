@@ -2,15 +2,16 @@
   <main role="main">
     <section class="jumbotron text-center">
       <div class="container">
-        <h1 class="jumbotron-heading">Album example</h1>
+        <h1 class="jumbotron-heading">{{ albumTitle }} Album</h1>
         <p class="lead text-muted">
-          Something short and leading about the collection below—its contents,
-          the creator, etc. Make it short and sweet, but not too short so folks
-          don't simply skip over it entirely.
-        </p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          venenatis placerat erat eget commodo. Maecenas non mi ipsum. Morbi
+          pulvinar egestas dolor, sagittis ultricies ex facilisis at. Donec
+          facilisis ligula eget ultricies posuere. Aliquam dignissim, arcu non
+          tempor posuere, neque nulla imperdiet lectus, sit amet semper ipsum
+          ligula id ipsum. Morbi sagittis erat vitae auctor scelerisque.
+          Pellentesque habitant morbi tristique senectus et netus et malesuada
+          fames ac turpis egestas.
         </p>
       </div>
     </section>
@@ -19,11 +20,10 @@
       <div class="container">
         <div class="row" v-if="albumToRender">
           <AlbumImage
-            v-for="(image_url, index) in someList[albumToRender]"
-            :image_url="image_url"
+            v-for="(imageUrl, index) in someList[albumToRender]"
+            :imageUrl="imageUrl"
             :key="index"
           />
-          <!-- Card(v-for="(card, idx) in viewOptions" :cardProps="card" :key="idx") -->
         </div>
       </div>
     </div>
@@ -40,6 +40,7 @@ import AlbumImage from "@/components/AlbumImage.vue";
 })
 export default class Album extends Vue {
   private albumToRender = "";
+  private albumTitle = "";
   private someList = {
     eagle: [
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
@@ -65,10 +66,11 @@ export default class Album extends Vue {
   created() {
     if ("albumName" in this.$route.params) {
       this.albumToRender = this.$route.params.albumName;
-      let albumName: string = this.$route.params.albumName;
-      albumName = albumName.charAt(0).toUpperCase() + albumName.slice(1);
+      let albumTitle: string = this.$route.params.albumName;
+      albumTitle = albumTitle.charAt(0).toUpperCase() + albumTitle.slice(1);
+      this.albumTitle = albumTitle;
 
-      document.title = `Dr Song's Portfolio - ${albumName} Album`;
+      document.title = `Dr Song's Portfolio - ${albumTitle} Album`;
     }
   }
 }

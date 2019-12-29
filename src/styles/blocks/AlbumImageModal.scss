@@ -1,0 +1,103 @@
+/*
+( B | E | M )
+ - Properties...........block properties only.
+ - Elements.............children of block.
+ - Modifiers............modify the aspect of Element or Block.
+ - States...............hover, focus, active or class for temporary state (js manips).
+ - Anims................keyframes.
+ - Patches..............quick fixes.
+
+   https://en.bem.info/methodology/css/
+*/
+.album-image-modal {
+  /*------------------------------------*\
+    #PROPS
+  \*------------------------------------*/
+  &__modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+    transition: opacity .3s ease;
+  }
+
+  &__modal-container {
+    margin: 0px auto;
+    padding: 0 0 0 0;
+    transition: all .3s ease;
+  }
+
+  &__modal-close {
+    margin-right: 15px;
+    margin-bottom: 3px;
+  }
+
+  &__modal-close:hover {
+    cursor: pointer;
+  }
+
+  &__modal-image {
+    height: 100%;
+  }
+
+  &__modal-image img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  &__modal-metadata-container {
+    align-self: right;
+    flex: 0 0 200px;
+    margin: 0;
+    padding: 20px 30px;
+    color: rgb(209, 205, 198);
+    background-color: rgb(24, 26, 27);
+    transition: all .3s ease;
+  }
+
+  &__modal-metadata-container-spinner {
+    margin-bottom: 10px;
+  }
+
+  &__modal-metadata-container-contents {
+    text-align: left;
+  }
+
+  &__modal-metadata-element {
+    margin-bottom: 30px;
+  }
+
+  &__modal-enter {
+    opacity: 0;
+  }
+
+  &__modal-leave-active {
+    opacity: 0;
+  }
+
+  &__modal-enter &__modal-container,
+  &__modal-leave-active &__modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  /*------------------------------------*\
+    #ELEMS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #MODIFIERS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #STATES
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #ANIMS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #PATCHES
+  \*------------------------------------*/
+}

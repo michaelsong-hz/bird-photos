@@ -1,0 +1,28 @@
+
+/*
+ * GLOBAL STYLESHEET
+ *
+ * Reference: 
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+ */
+
+/*
+ * Shared styles
+ * Order matters 🤗
+ */
+@use "./shared/variables";
+@use "./shared/default";
+
+/*
+ * External Libraries
+ */
+
+/*
+ * Blocks = Components
+ * 
+ * BEM Blocks are not supposed to collided and the call order shouldn't matter!
+ * Reference:
+ * http://stylus-lang.com/docs/import.html#file-globbing
+ */
+@use "./blocks/AlbumImage.scss";
+@use "./blocks/AlbumImageModal.scss";
