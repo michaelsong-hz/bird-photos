@@ -10,8 +10,9 @@
  * Shared styles
  * Order matters 🤗
  */
-@use "./shared/variables";
-@use "./shared/default";
+@import "./shared/variables";
+@import "./shared/default";
+
 
 /*
  * External Libraries
@@ -24,5 +25,6 @@
  * Reference:
  * http://stylus-lang.com/docs/import.html#file-globbing
  */
-@use "./blocks/AlbumImage.scss";
-@use "./blocks/AlbumImageModal.scss";
+@import "./blocks/AlbumImage.scss";
+@import "./blocks/AlbumImageModal.scss";
+@import "./blocks/AlbumImageModalMetadata.scss";

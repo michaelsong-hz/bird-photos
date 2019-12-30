@@ -10,5 +10,5 @@
 </template>
 
 <style lang="scss">
-@use "./styles/global";
+@import "./styles/global";
 </style>

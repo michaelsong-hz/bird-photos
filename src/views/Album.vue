@@ -46,7 +46,7 @@ export default class Album extends Vue {
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",

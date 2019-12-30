@@ -4,9 +4,16 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import BootstrapVue from "bootstrap-vue";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faWindowClose, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+
+library.add(faWindowClose);
+library.add(faInfoCircle);
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);

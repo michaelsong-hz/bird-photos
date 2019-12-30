@@ -26,49 +26,50 @@
   }
 
   &__modal-container {
+    display: flex;
+    width: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 0px auto;
     padding: 0 0 0 0;
     transition: all .3s ease;
   }
 
-  &__modal-close {
-    margin-right: 15px;
-    margin-bottom: 3px;
+  &__modal-nav-mask {
+    transform: translate3d(0, 0, 0);
+    width: 100%;
+    transition: opacity .2s ease;
   }
 
-  &__modal-close:hover {
+  &__modal-nav-container {
+    display: flex;
+    flex-direction: row-reverse;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .2);
+  }
+
+  &__modal-nav-element {
+    margin-top: 2px;
+    margin-right: 10px;
+    color: $modal-metadata-color;
+    transition: 0.2s;
+  }
+
+  &__modal-nav-element:hover {
+    color: white;
     cursor: pointer;
   }
 
   &__modal-image {
-    height: 100%;
+    align-self: center;
+    max-height: 100%;
   }
 
   &__modal-image img {
     max-height: 100%;
     max-width: 100%;
-  }
-
-  &__modal-metadata-container {
-    align-self: right;
-    flex: 0 0 200px;
-    margin: 0;
-    padding: 20px 30px;
-    color: rgb(209, 205, 198);
-    background-color: rgb(24, 26, 27);
-    transition: all .3s ease;
-  }
-
-  &__modal-metadata-container-spinner {
-    margin-bottom: 10px;
-  }
-
-  &__modal-metadata-container-contents {
-    text-align: left;
-  }
-
-  &__modal-metadata-element {
-    margin-bottom: 30px;
   }
 
   &__modal-enter {

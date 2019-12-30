@@ -14,11 +14,13 @@
       @close="showModal = false"
       :imageLoaded="childImageLoaded"
     >
+      <!-- Add "crossorigin='anonymous'" to solve Chrome CORS error https://stackoverflow.com/a/47359958 -->
       <img
         slot="image"
         id="slot-image"
         :src="fullImageUrl"
         @load="childImageLoaded = true"
+        crossorigin="anonymous"
       />
     </AlbumImageModal>
   </div>
@@ -41,7 +43,9 @@ export default class AlbumImage extends Vue {
   childImageLoaded = false;
 
   created() {
-    this.fullImageUrl = this.imageUrl.replace("/thumbnails/", "/images/");
+    // Add "?cacheblock=true" hack to solve Chrome CORS error https://stackoverflow.com/a/50840500
+    this.fullImageUrl =
+      this.imageUrl.replace("/thumbnails/", "/images/") + "?cacheblock=true";
   }
 
   mounted() {

@@ -1,75 +1,65 @@
 <template>
-  <!-- <div class="album-image-modal"> -->
   <transition name="album-image-modal__modal">
     <div class="album-image-modal__modal-mask">
-      <div class="album-image-modal__modal-container">
-        <span
-          class="album-image-modal__modal-close close"
-          @click="$emit('close')"
-          >&times;</span
-        >
+      <div
+        class="album-image-modal__modal-container"
+        @mouseover="showImageNav = true"
+        @mouseleave="showImageNav = false"
+      >
+        <transition name="album-image-modal__modal" appear>
+          <div
+            v-if="showImageNav === true"
+            class="album-image-modal__modal-nav-mask"
+          >
+            <div class="album-image-modal__modal-nav-container">
+              <div class="album-image-modal__modal-nav-element">
+                <font-awesome-icon
+                  @click="close"
+                  :icon="['fas', 'window-close']"
+                  size="2x"
+                />
+              </div>
+              <div class="album-image-modal__modal-nav-element">
+                <font-awesome-icon
+                  @click="showMetaData = !showMetaData"
+                  :icon="['fas', 'info-circle']"
+                  size="2x"
+                />
+              </div>
+            </div>
+          </div>
+        </transition>
 
         <div class="album-image-modal__modal-image" ref="a">
           <slot name="image" />
         </div>
       </div>
-      <div class="album-image-modal__modal-metadata-container">
-        <div v-if="imageMetaData['date'] === ''">
-          <div
-            class="album-image-modal__modal-metadata-container-spinner spinner-border"
-            role="status"
-            align="center"
-          >
-            <span class="sr-only">Loading...</span>
-          </div>
-          <p>Loading Image Metadata</p>
-        </div>
-        <div
-          class="album-image-modal__modal-metadata-container-contents"
-          v-else
-        >
-          <div class="album-image-modal__modal-metadata-element">
-            <h4>Date</h4>
-            <p>{{ imageMetaData["date"] }}</p>
-          </div>
-          <div class="album-image-modal__modal-metadata-element">
-            <h4>Time</h4>
-            <p>{{ imageMetaData["time"] }}</p>
-          </div>
-          <div class="album-image-modal__modal-metadata-element">
-            <h4>Aperture</h4>
-            <p>
-              ƒ/{{ imageMetaData["fNumberNumerator"] }}.{{
-                imageMetaData["fNumberDenominator"]
-              }}
-            </p>
-          </div>
-          <div class="album-image-modal__modal-metadata-element">
-            <h4>Exposure</h4>
-            <p>
-              {{ imageMetaData["exposureTimeNumerator"] }}/{{
-                imageMetaData["exposureTimeDenominator"]
-              }}
-            </p>
-          </div>
-        </div>
-      </div>
+      <transition name="album-image-modal-metadata__wrapper" appear>
+        <AlbumImageModalMetadata
+          v-if="showMetaData === true"
+          :imageMetaData="imageMetaData"
+        />
+      </transition>
     </div>
   </transition>
-  <!-- </div> -->
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
 
+import AlbumImageModalMetadata from "@/components/AlbumImageModalMetadata.vue";
+
 declare var EXIF: any;
 
 @Component({
-  components: {}
+  components: { AlbumImageModalMetadata }
 })
 export default class AlbumImageModal extends Vue {
   @Prop({ default: false }) imageLoaded!: boolean;
+  private showMetaData = true;
+  private showImageNav = false;
+
   imageMetaData: any = {
     date: "",
     time: "",
@@ -89,6 +79,17 @@ export default class AlbumImageModal extends Vue {
       this.getImageMetadata();
       // eslint-disable-next-line no-empty
     } catch (error) {}
+
+    // Backup to try getting metadata again if empty as EXIF lib is unreliable
+    setTimeout(() => {
+      if (this.imageMetaData["date"] === "") {
+        try {
+          // Gets image metadata for already cached images
+          this.getImageMetadata();
+          // eslint-disable-next-line no-empty
+        } catch (error) {}
+      }
+    }, 2000);
   }
 
   @Watch("imageLoaded")
