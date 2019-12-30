@@ -1,5 +1,26 @@
 <template>
   <main role="main">
+    <AlbumModal
+      v-if="modalIndex !== -1"
+      @close="
+        modalIndex = -1;
+        modalImageLoaded = false;
+      "
+      @navigate="handleNavigate"
+      :imageLoaded="modalImageLoaded"
+      :currentIndex="modalIndex"
+      :albumLength="imagesToRender[albumToRender].length"
+    >
+      <!-- Add "crossorigin='anonymous'" to solve Chrome CORS error https://stackoverflow.com/a/47359958 -->
+      <img
+        slot="image"
+        id="slot-image"
+        :src="imageToLoad"
+        @load="modalImageLoaded = true"
+        crossorigin="anonymous"
+      />
+    </AlbumModal>
+
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">{{ albumTitle }} Album</h1>
@@ -20,7 +41,8 @@
       <div class="container">
         <div class="row" v-if="albumToRender">
           <AlbumImage
-            v-for="(imageUrl, index) in someList[albumToRender]"
+            v-for="(imageUrl, index) in imagesToRender[albumToRender]"
+            @click.native="modalIndex = index"
             :imageUrl="imageUrl"
             :key="index"
           />
@@ -34,14 +56,18 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 import AlbumImage from "@/components/AlbumImage.vue";
+import AlbumModal from "@/components/AlbumModal.vue";
 
 @Component({
-  components: { AlbumImage }
+  components: { AlbumImage, AlbumModal }
 })
 export default class Album extends Vue {
   private albumToRender = "";
   private albumTitle = "";
-  private someList = {
+  private modalIndex: number = -1;
+  private modalImageLoaded: boolean = false;
+
+  private imagesToRender: any = {
     eagle: [
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
@@ -72,6 +98,34 @@ export default class Album extends Vue {
 
       document.title = `Dr Song's Portfolio - ${albumTitle} Album`;
     }
+  }
+
+  mounted() {
+    let exifScript = document.createElement("script");
+    exifScript.setAttribute("src", "https://cdn.jsdelivr.net/npm/exif-js");
+    document.head.appendChild(exifScript);
+  }
+
+  get imageToLoad() {
+    // Add param hack to solve Chrome CORS error https://stackoverflow.com/a/50840500
+    return (
+      this.imagesToRender[this.albumToRender][this.modalIndex].replace(
+        "/thumbnails/",
+        "/images/"
+      ) + "?cacheblock=true"
+    );
+  }
+
+  handleNavigate(direction: number) {
+    // Hack to re-initialize EXIF.js by reloading the component,
+    // otherwise EXIF.js always shows old EXIF data
+    this.modalImageLoaded = false;
+    let tempModalIndex = this.modalIndex;
+
+    this.modalIndex = -1;
+    setTimeout(() => {
+      this.modalIndex = tempModalIndex + direction;
+    }, 1);
   }
 }
 </script>

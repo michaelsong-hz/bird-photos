@@ -1,0 +1,74 @@
+/*
+( B | E | M )
+ - Properties...........block properties only.
+ - Elements.............children of block.
+ - Modifiers............modify the aspect of Element or Block.
+ - States...............hover, focus, active or class for temporary state (js manips).
+ - Anims................keyframes.
+ - Patches..............quick fixes.
+
+   https://en.bem.info/methodology/css/
+*/
+.album-modal-nav {
+  width: inherit;
+  height: inherit;
+
+  /*------------------------------------*\
+    #PROPS
+  \*------------------------------------*/
+
+  &__bar-mask {
+    transform: translate3d(0, 0, 0);
+    width: 100%;
+    height: inherit;
+    transition: opacity .2s ease;
+  }
+
+  &__bar-container {
+    display: flex;
+    flex-direction: row-reverse;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .2);
+  }
+
+  &__bar-element {
+    margin: 7px 10px 5px 10px;
+    color: $modal-nav-color;
+    transition: 0.2s;
+  }
+
+  &__bar-element-disabled {
+    margin: 7px 10px 5px 10px;
+    color: $modal-nav-disabled-color;
+  }
+
+  &__bar-element:hover {
+    color: $modal-nav-highlighted-color;
+    cursor: pointer;
+  }
+
+  &__transition-enter {
+    opacity: 0;
+  }
+
+  &__transition-leave-active {
+    opacity: 0;
+  }
+
+  /*------------------------------------*\
+    #ELEMS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #MODIFIERS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #STATES
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #ANIMS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #PATCHES
+  \*------------------------------------*/
+}

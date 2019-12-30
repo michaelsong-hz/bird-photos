@@ -1,8 +1,8 @@
 <template>
-  <div class="album-image-modal-metadata__container">
+  <div class="album-modal-metadata__container">
     <div v-if="imageMetaData['date'] === ''">
       <div
-        class="album-image-modal-metadata__container-spinner spinner-grow"
+        class="album-modal-metadata__container-spinner spinner-grow"
         role="status"
         align="center"
       >
@@ -10,16 +10,16 @@
       </div>
       <p>Loading Metadata</p>
     </div>
-    <div class="album-image-modal-metadata__container-contents" v-else>
-      <div class="album-image-modal-metadata__container-element">
+    <div class="album-modal-metadata__container-contents" v-else>
+      <div class="album-modal-metadata__container-element">
         <h4>Date</h4>
         <p>{{ imageMetaData["date"] }}</p>
       </div>
-      <div class="album-image-modal-metadata__container-element">
+      <div class="album-modal-metadata__container-element">
         <h4>Time</h4>
         <p>{{ imageMetaData["time"] }}</p>
       </div>
-      <div class="album-image-modal-metadata__container-element">
+      <div class="album-modal-metadata__container-element">
         <h4>Aperture</h4>
         <p>
           ƒ/{{ imageMetaData["fNumberNumerator"] }}.{{
@@ -27,7 +27,7 @@
           }}
         </p>
       </div>
-      <div class="album-image-modal-metadata__container-element">
+      <div class="album-modal-metadata__container-element">
         <h4>Exposure</h4>
         <p>
           {{ imageMetaData["exposureTimeNumerator"] }}/{{
@@ -46,7 +46,7 @@ import { Component, Prop } from "vue-property-decorator";
 @Component({
   components: {}
 })
-export default class AlbumImageModalMetadata extends Vue {
+export default class AlbumModalMetadata extends Vue {
   @Prop() imageMetaData!: object;
 }
 </script>

@@ -1,41 +1,26 @@
 <template>
-  <transition name="album-image-modal__modal">
-    <div class="album-image-modal__modal-mask">
+  <transition name="album-modal__modal" appear>
+    <div class="album-modal__modal-mask">
       <div
-        class="album-image-modal__modal-container"
+        class="album-modal__modal-container"
         @mouseover="showImageNav = true"
         @mouseleave="showImageNav = false"
       >
-        <transition name="album-image-modal__modal" appear>
-          <div
-            v-if="showImageNav === true"
-            class="album-image-modal__modal-nav-mask"
-          >
-            <div class="album-image-modal__modal-nav-container">
-              <div class="album-image-modal__modal-nav-element">
-                <font-awesome-icon
-                  @click="close"
-                  :icon="['fas', 'window-close']"
-                  size="2x"
-                />
-              </div>
-              <div class="album-image-modal__modal-nav-element">
-                <font-awesome-icon
-                  @click="showMetaData = !showMetaData"
-                  :icon="['fas', 'info-circle']"
-                  size="2x"
-                />
-              </div>
-            </div>
-          </div>
-        </transition>
+        <AlbumModalNav
+          :showImageNav="showImageNav"
+          @close="$emit('close')"
+          @toggleShowMetadata="showMetaData = !showMetaData"
+          @navigate="handleNavigate"
+          :rightNavDisabled="rightNavDisabled"
+          :leftNavDisabled="leftNavDisabled"
+        />
 
-        <div class="album-image-modal__modal-image" ref="a">
+        <div class="album-modal__modal-image" ref="a">
           <slot name="image" />
         </div>
       </div>
-      <transition name="album-image-modal-metadata__wrapper" appear>
-        <AlbumImageModalMetadata
+      <transition name="album-modal-metadata__wrapper" appear>
+        <AlbumModalMetadata
           v-if="showMetaData === true"
           :imageMetaData="imageMetaData"
         />
@@ -48,17 +33,24 @@
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
 
-import AlbumImageModalMetadata from "@/components/AlbumImageModalMetadata.vue";
+import AlbumModalNav from "@/components/AlbumModalNav.vue";
+import AlbumModalMetadata from "@/components/AlbumModalMetadata.vue";
 
 declare var EXIF: any;
 
 @Component({
-  components: { AlbumImageModalMetadata }
+  components: { AlbumModalNav, AlbumModalMetadata }
 })
-export default class AlbumImageModal extends Vue {
+export default class AlbumModal extends Vue {
   @Prop({ default: false }) imageLoaded!: boolean;
-  private showMetaData = true;
+  @Prop({ default: false }) disableTransitions!: boolean;
+  @Prop() albumLength!: number;
+  @Prop() currentIndex!: number;
+
+  private showMetaData = false;
   private showImageNav = false;
+  private leftNavDisabled = false;
+  private rightNavDisabled = false;
 
   imageMetaData: any = {
     date: "",
@@ -74,6 +66,7 @@ export default class AlbumImageModal extends Vue {
   }
 
   mounted() {
+    this.computeNavStatus();
     try {
       // Gets image metadata for already cached images
       this.getImageMetadata();
@@ -118,6 +111,28 @@ export default class AlbumImageModal extends Vue {
         fNumberDenominator: EXIF.getTag(displayedImage, "FNumber").denominator
       };
     });
+  }
+
+  handleNavigate(direction: number) {
+    if (
+      !(
+        (this.rightNavDisabled && direction === 1) ||
+        (this.leftNavDisabled && direction === -1)
+      )
+    ) {
+      this.$emit("navigate", direction);
+    }
+  }
+
+  computeNavStatus() {
+    this.leftNavDisabled = false;
+    this.rightNavDisabled = false;
+    if (this.currentIndex === 0) {
+      this.leftNavDisabled = true;
+    }
+    if (this.currentIndex === this.albumLength - 1) {
+      this.rightNavDisabled = true;
+    }
   }
 }
 </script>
