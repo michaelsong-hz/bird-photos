@@ -19,9 +19,12 @@
           <slot name="image" />
         </div>
       </div>
-      <transition name="album-modal-metadata__wrapper" appear>
+      <transition
+        :name="disableAnimations ? '' : 'album-modal-metadata__wrapper'"
+        appear
+      >
         <AlbumModalMetadata
-          v-if="showMetaData === true"
+          v-if="showModalMetadata === true"
           :imageMetaData="imageMetaData"
         />
       </transition>
@@ -32,6 +35,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
+import { mapState } from "vuex";
 
 import AlbumModalNav from "@/components/AlbumModalNav.vue";
 import AlbumModalMetadata from "@/components/AlbumModalMetadata.vue";
@@ -39,11 +43,13 @@ import AlbumModalMetadata from "@/components/AlbumModalMetadata.vue";
 declare var EXIF: any;
 
 @Component({
-  components: { AlbumModalNav, AlbumModalMetadata }
+  components: { AlbumModalNav, AlbumModalMetadata },
+  computed: mapState(["showModalMetadata"])
 })
 export default class AlbumModal extends Vue {
   @Prop({ default: false }) imageLoaded!: boolean;
   @Prop({ default: false }) disableTransitions!: boolean;
+  @Prop({ default: false }) disableAnimations!: boolean;
   @Prop() albumLength!: number;
   @Prop() currentIndex!: number;
 

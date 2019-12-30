@@ -10,6 +10,7 @@
       :imageLoaded="modalImageLoaded"
       :currentIndex="modalIndex"
       :albumLength="imagesToRender[albumToRender].length"
+      :disableAnimations="disableModalAnimations"
     >
       <!-- Add "crossorigin='anonymous'" to solve Chrome CORS error https://stackoverflow.com/a/47359958 -->
       <img
@@ -66,6 +67,7 @@ export default class Album extends Vue {
   private albumTitle = "";
   private modalIndex: number = -1;
   private modalImageLoaded: boolean = false;
+  private disableModalAnimations: boolean = false;
 
   private imagesToRender: any = {
     eagle: [
@@ -116,12 +118,16 @@ export default class Album extends Vue {
   handleNavigate(direction: number) {
     // Hack to re-initialize EXIF.js by reloading the component,
     // otherwise EXIF.js always shows old EXIF data
+    this.disableModalAnimations = true;
     this.modalImageLoaded = false;
     let tempModalIndex = this.modalIndex;
 
     this.modalIndex = -1;
     setTimeout(() => {
       this.modalIndex = tempModalIndex + direction;
+    }, 1);
+    setTimeout(() => {
+      this.disableModalAnimations = false;
     }, 1);
   }
 }

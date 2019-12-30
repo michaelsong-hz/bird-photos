@@ -16,7 +16,7 @@
           </div>
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="$emit('toggleShowMetadata')"
+              @click="$store.commit('toggleShowModelMetadata')"
               :icon="['fas', 'info-circle']"
               size="2x"
             />

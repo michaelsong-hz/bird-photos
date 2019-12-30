@@ -4,8 +4,14 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    showModalMetadata: false
+  },
+  mutations: {
+    toggleShowModelMetadata(state, payload) {
+      state.showModalMetadata = !state.showModalMetadata;
+    }
+  },
   actions: {},
   modules: {}
 });
