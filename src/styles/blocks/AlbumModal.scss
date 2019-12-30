@@ -54,6 +54,12 @@
     opacity: 0;
   }
 
+  &__modal-enter &__modal-container,
+  &__modal-leave-active &__modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
   /*------------------------------------*\
     #ELEMS
   \*------------------------------------*/
