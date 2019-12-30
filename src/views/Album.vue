@@ -107,12 +107,9 @@ export default class Album extends Vue {
   }
 
   get imageToLoad() {
-    // Add param hack to solve Chrome CORS error https://stackoverflow.com/a/50840500
-    return (
-      this.imagesToRender[this.albumToRender][this.modalIndex].replace(
-        "/thumbnails/",
-        "/images/"
-      ) + "?cacheblock=true"
+    return this.imagesToRender[this.albumToRender][this.modalIndex].replace(
+      "/thumbnails/",
+      "/images/"
     );
   }
 
