@@ -1,7 +1,12 @@
 <template>
   <div class="col-md-4">
-    <div class="mb-4 box-shadow album-image__holder">
-      <img class="card-img" alt="bird image" :src="imageUrl" />
+    <div class="mb-4 box-shadow album-image">
+      <div class="text-nowrap">
+        <h3 v-if="title">{{ title }}</h3>
+      </div>
+      <div class="album-image__holder">
+        <img class="card-img" alt="bird image" :src="imageUrl" />
+      </div>
     </div>
   </div>
 </template>
@@ -14,5 +19,6 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 })
 export default class AlbumImage extends Vue {
   @Prop() imageUrl!: string;
+  @Prop() title!: string;
 }
 </script>

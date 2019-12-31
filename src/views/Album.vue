@@ -70,24 +70,22 @@ export default class Album extends Vue {
   private disableModalAnimations: boolean = false;
 
   private imagesToRender: any = {
+    featured: [
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I1728.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I8703-2.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I3685-1.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I2810.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I3685.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I7420-1.jpg"
+    ],
     eagle: [
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I1663.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I1667.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg"
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg"
     ],
     canada: [
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/20190908_LakingGarden_-368.jpg"
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Canada/20190908_LakingGarden_-368.jpg"
     ]
   };
 
