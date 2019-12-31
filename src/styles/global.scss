@@ -25,6 +25,7 @@
  * Reference:
  * http://stylus-lang.com/docs/import.html#file-globbing
  */
+@import "./blocks/Navbar.scss";
 @import "./blocks/AlbumImage.scss";
 @import "./blocks/AlbumModal.scss";
 @import "./blocks/AlbumModalMetadata.scss";
