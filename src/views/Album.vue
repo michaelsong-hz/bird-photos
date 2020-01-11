@@ -25,7 +25,7 @@
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">{{ albumTitle }} Album</h1>
-        <p class="lead text-muted">
+        <!-- <p class="lead text-muted">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
           venenatis placerat erat eget commodo. Maecenas non mi ipsum. Morbi
           pulvinar egestas dolor, sagittis ultricies ex facilisis at. Donec
@@ -34,7 +34,7 @@
           ligula id ipsum. Morbi sagittis erat vitae auctor scelerisque.
           Pellentesque habitant morbi tristique senectus et netus et malesuada
           fames ac turpis egestas.
-        </p>
+        </p> -->
       </div>
     </section>
 
