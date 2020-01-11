@@ -41,14 +41,29 @@ export default class Albums extends Vue {
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I1728.jpg"
     ],
     [
-      "Eagle Album",
-      "/albums/eagle",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Eagle/A26I0755.jpg"
+      "2020 Album",
+      "/albums/2020",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2020/A26I1420-1.jpg"
     ],
     [
-      "Canada Album",
-      "/albums/canada",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Canada/20190908_LakingGarden_-368.jpg"
+      "2019 Album",
+      "/albums/2019",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2019/A26I3687.jpg"
+    ],
+    [
+      "2018 Album",
+      "/albums/2018",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2018/A26I1420.jpg"
+    ],
+    [
+      "2017 Album",
+      "/albums/2017",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2017/1d88c86ee4cb1ca85f506153885e7335.jpg"
+    ],
+    [
+      "2016 Album",
+      "/albums/2016",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2016/HL2A6053-1.jpg"
     ]
   ];
 
