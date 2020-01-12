@@ -11,8 +11,6 @@
           @close="$emit('close')"
           @toggleShowMetadata="showMetaData = !showMetaData"
           @navigate="handleNavigate"
-          :rightNavDisabled="rightNavDisabled"
-          :leftNavDisabled="leftNavDisabled"
         />
 
         <div class="album-modal__modal-image" ref="a">
@@ -55,8 +53,6 @@ export default class AlbumModal extends Vue {
 
   private showMetaData = false;
   private showImageNav = false;
-  private leftNavDisabled = false;
-  private rightNavDisabled = false;
 
   imageMetaData: any = {
     date: "",
@@ -72,7 +68,6 @@ export default class AlbumModal extends Vue {
   }
 
   mounted() {
-    this.computeNavStatus();
     try {
       // Gets image metadata for already cached images
       this.getImageMetadata();
@@ -120,25 +115,7 @@ export default class AlbumModal extends Vue {
   }
 
   handleNavigate(direction: number) {
-    if (
-      !(
-        (this.rightNavDisabled && direction === 1) ||
-        (this.leftNavDisabled && direction === -1)
-      )
-    ) {
-      this.$emit("navigate", direction);
-    }
-  }
-
-  computeNavStatus() {
-    this.leftNavDisabled = false;
-    this.rightNavDisabled = false;
-    if (this.currentIndex === 0) {
-      this.leftNavDisabled = true;
-    }
-    if (this.currentIndex === this.albumLength - 1) {
-      this.rightNavDisabled = true;
-    }
+    this.$emit("navigate", direction);
   }
 
   handleSwipe(direction: any) {

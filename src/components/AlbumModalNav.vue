@@ -21,26 +21,14 @@
               size="2x"
             />
           </div>
-          <div
-            :class="
-              rightNavDisabled
-                ? 'album-modal-nav__bar-element-disabled'
-                : 'album-modal-nav__bar-element'
-            "
-          >
+          <div class="album-modal-nav__bar-element">
             <font-awesome-icon
               @click="navigateRight"
               :icon="['fas', 'arrow-right']"
               size="2x"
             />
           </div>
-          <div
-            :class="
-              leftNavDisabled
-                ? 'album-modal-nav__bar-element-disabled'
-                : 'album-modal-nav__bar-element'
-            "
-          >
+          <div class="album-modal-nav__bar-element">
             <font-awesome-icon
               @click="navigateLeft"
               :icon="['fas', 'arrow-left']"
@@ -62,8 +50,6 @@ import { Component, Prop, Watch } from "vue-property-decorator";
 })
 export default class AlbumModal extends Vue {
   @Prop() showImageNav!: boolean;
-  @Prop() leftNavDisabled!: boolean;
-  @Prop() rightNavDisabled!: boolean;
 
   mounted() {
     window.addEventListener("keydown", e => {

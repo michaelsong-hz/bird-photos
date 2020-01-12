@@ -38,11 +38,6 @@
     transition: 0.2s;
   }
 
-  &__bar-element-disabled {
-    margin: 7px 10px 5px 10px;
-    color: $modal-nav-disabled-color;
-  }
-
   &__bar-element:hover {
     color: $modal-nav-highlighted-color;
     cursor: pointer;

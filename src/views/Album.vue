@@ -338,7 +338,16 @@ export default class Album extends Vue {
 
     this.modalIndex = -1;
     setTimeout(() => {
-      this.modalIndex = tempModalIndex + direction;
+      if (tempModalIndex + direction <= -1) {
+        this.modalIndex = this.imagesToRender[this.albumToRender].length - 1;
+      } else if (
+        tempModalIndex + direction >=
+        this.imagesToRender[this.albumToRender].length
+      ) {
+        this.modalIndex = 0;
+      } else {
+        this.modalIndex = tempModalIndex + direction;
+      }
     }, 1);
     setTimeout(() => {
       this.disableModalAnimations = false;
