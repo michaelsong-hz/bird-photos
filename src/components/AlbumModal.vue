@@ -1,6 +1,6 @@
 <template>
   <transition name="album-modal__modal" appear>
-    <div class="album-modal__modal-mask">
+    <div class="album-modal__modal-mask" v-hammer:swipe="handleSwipe">
       <div
         class="album-modal__modal-container"
         @mouseover="showImageNav = true"
@@ -138,6 +138,14 @@ export default class AlbumModal extends Vue {
     }
     if (this.currentIndex === this.albumLength - 1) {
       this.rightNavDisabled = true;
+    }
+  }
+
+  handleSwipe(direction: any) {
+    if (direction.direction === 4) {
+      this.handleNavigate(-1);
+    } else if (direction.direction === 2) {
+      this.handleNavigate(1);
     }
   }
 }

@@ -4,6 +4,7 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import BootstrapVue from "bootstrap-vue";
+import { VueHammer } from "vue2-hammer";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faWindowClose,
@@ -24,6 +25,7 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.use(VueHammer);
 
 new Vue({
   router,
