@@ -16,10 +16,6 @@
         <p>{{ imageMetaData["date"] }}</p>
       </div>
       <div class="album-modal-metadata__container-element">
-        <h4>Time</h4>
-        <p>{{ imageMetaData["time"] }}</p>
-      </div>
-      <div class="album-modal-metadata__container-element">
         <h4>Aperture</h4>
         <p>
           ƒ/{{ imageMetaData["fNumberNumerator"] }}.{{
@@ -33,6 +29,12 @@
           {{ imageMetaData["exposureTimeNumerator"] }}/{{
             imageMetaData["exposureTimeDenominator"]
           }}
+        </p>
+      </div>
+      <div class="album-modal-metadata__container-element">
+        <h4>ISO</h4>
+        <p>
+          {{ imageMetaData["ISO"] }}
         </p>
       </div>
     </div>

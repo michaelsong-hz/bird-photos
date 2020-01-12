@@ -60,11 +60,11 @@ export default class AlbumModal extends Vue {
 
   imageMetaData: any = {
     date: "",
-    time: "",
     exposureTimeDenominator: 0,
     exposureTimeNumerator: 0,
     fNumberDenominator: 0,
-    fNumberNumerator: 0
+    fNumberNumerator: 0,
+    ISO: 0
   };
 
   close() {
@@ -108,13 +108,13 @@ export default class AlbumModal extends Vue {
 
       this.imageMetaData = {
         date: photoDateTime[0],
-        time: photoDateTime[1],
         exposureTimeNumerator: EXIF.getTag(displayedImage, "ExposureTime")
           .numerator,
         exposureTimeDenominator: EXIF.getTag(displayedImage, "ExposureTime")
           .denominator,
         fNumberNumerator: EXIF.getTag(displayedImage, "FNumber").numerator,
-        fNumberDenominator: EXIF.getTag(displayedImage, "FNumber").denominator
+        fNumberDenominator: EXIF.getTag(displayedImage, "FNumber").denominator,
+        ISO: EXIF.getTag(displayedImage, "ISOSpeedRatings")
       };
     });
   }
