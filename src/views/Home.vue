@@ -1,16 +1,20 @@
 <template>
-  <div class="container home">
-    <Slider />
+  <div>
+    <div class="container">
+      <Slider />
+    </div>
+    <AlbumsList />
   </div>
 </template>
 
-<script>
-import Slider from "@/components/Slider.vue";
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: "home",
-  components: {
-    Slider
-  }
-};
+import Slider from "@/components/Slider.vue";
+import AlbumsList from "@/components/AlbumsList.vue";
+
+@Component({
+  components: { Slider, AlbumsList }
+})
+export default class Home extends Vue {}
 </script>

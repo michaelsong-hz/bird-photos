@@ -1,0 +1,36 @@
+/*
+( B | E | M )
+ - Properties...........block properties only.
+ - Elements.............children of block.
+ - Modifiers............modify the aspect of Element or Block.
+ - States...............hover, focus, active or class for temporary state (js manips).
+ - Anims................keyframes.
+ - Patches..............quick fixes.
+
+   https://en.bem.info/methodology/css/
+*/
+.slider {
+  margin-bottom: 100px;
+  /*------------------------------------*\
+    #PROPS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #ELEMS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #MODIFIERS
+  \*------------------------------------*/
+  @media (max-width: 575.98px) {
+    margin-bottom: 50px;
+  }
+
+  /*------------------------------------*\
+    #STATES
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #ANIMS
+  \*------------------------------------*/
+  /*------------------------------------*\
+    #PATCHES
+  \*------------------------------------*/
+}

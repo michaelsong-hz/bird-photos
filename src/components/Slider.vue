@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="slider">
     <b-carousel
       id="carousel-1"
       :interval="4000"
