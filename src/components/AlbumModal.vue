@@ -58,8 +58,7 @@ export default class AlbumModal extends Vue {
     date: "",
     exposureTimeDenominator: 0,
     exposureTimeNumerator: 0,
-    fNumberDenominator: 0,
-    fNumberNumerator: 0,
+    fNumber: "0.0",
     ISO: 0
   };
 
@@ -97,18 +96,21 @@ export default class AlbumModal extends Vue {
   getImageMetadata() {
     var displayedImage = document.getElementById("slot-image");
     EXIF.getData(displayedImage, () => {
-      let photoDateTime = EXIF.getTag(displayedImage, "DateTimeOriginal").split(
-        " "
-      );
+      let date = EXIF.getTag(displayedImage, "DateTimeOriginal").split(" ")[0];
+      date = date.replace(/:/g, "/");
+
+      let fNumber =
+        EXIF.getTag(displayedImage, "FNumber").numerator /
+        EXIF.getTag(displayedImage, "FNumber").denominator;
+      fNumber = Math.round(fNumber * 10) / 10;
 
       this.imageMetaData = {
-        date: photoDateTime[0],
+        date: date,
         exposureTimeNumerator: EXIF.getTag(displayedImage, "ExposureTime")
           .numerator,
         exposureTimeDenominator: EXIF.getTag(displayedImage, "ExposureTime")
           .denominator,
-        fNumberNumerator: EXIF.getTag(displayedImage, "FNumber").numerator,
-        fNumberDenominator: EXIF.getTag(displayedImage, "FNumber").denominator,
+        fNumber: fNumber.toFixed(1),
         ISO: EXIF.getTag(displayedImage, "ISOSpeedRatings")
       };
     });

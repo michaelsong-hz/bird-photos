@@ -17,11 +17,7 @@
       </div>
       <div class="album-modal-metadata__container-element">
         <h4>Aperture</h4>
-        <p>
-          ƒ/{{ imageMetaData["fNumberNumerator"] }}.{{
-            imageMetaData["fNumberDenominator"]
-          }}
-        </p>
+        <p>ƒ/{{ imageMetaData["fNumber"] }}</p>
       </div>
       <div class="album-modal-metadata__container-element">
         <h4>Exposure</h4>
