@@ -3,7 +3,7 @@
     <div class="album-modal__modal-mask" v-hammer:swipe="handleSwipe">
       <div
         class="album-modal__modal-container"
-        @mouseover="showImageNav = true"
+        @mouseover="handleShowImageNav"
         @mouseleave="showImageNav = false"
       >
         <AlbumModalNav
@@ -55,6 +55,7 @@ export default class AlbumModal extends Vue {
 
   private showMetaData = false;
   private showImageNav = false;
+  private showImageNavTimeout!: number;
 
   imageMetaData: any = {
     date: "",
@@ -85,6 +86,18 @@ export default class AlbumModal extends Vue {
         } catch (error) {}
       }
     }, 2000);
+
+    this.handleShowImageNav();
+  }
+
+  handleShowImageNav() {
+    this.showImageNav = true;
+    if (this.showImageNavTimeout) {
+      clearTimeout(this.showImageNavTimeout);
+    }
+    this.showImageNavTimeout = setTimeout(() => {
+      this.showImageNav = false;
+    }, 3000);
   }
 
   @Watch("imageLoaded")
