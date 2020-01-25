@@ -35,7 +35,7 @@ export default class AlbumsList extends Vue {
     [
       "Featured Album",
       "/albums/featured",
-      "https://bird-created.s3.amazonaws.com/images/albums/Featured/A26I8703-2.jpg"
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2019/A26I8703.jpg"
     ],
     [
       "2020 Album",

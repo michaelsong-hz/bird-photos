@@ -72,12 +72,12 @@ export default class Album extends Vue {
   private imagesToRender: any = {
     featured: [
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I1728.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I8703-2.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2019/A26I8703.jpg",
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I3685-1.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I3685.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I7420-1.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I6705.jpg",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/Featured/A26I9555.jpg"
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2019/A26I3685-2.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2018/A26I1420.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2018/A26I6705.jpg",
+      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2020/A26I9555.jpg"
     ],
     2016: [
       "https://bird-created.s3.amazonaws.com/thumbnails/albums/2016/HL2A0658.JPG",
