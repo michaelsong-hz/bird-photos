@@ -33,7 +33,7 @@
   }
 
   &__bar-element {
-    margin: 7px 10px 5px 10px;
+    margin: 7px 10px -4px 10px;
     color: $modal-nav-color;
     transition: 0.2s;
   }
@@ -41,6 +41,10 @@
   &__bar-element:hover {
     color: $modal-nav-highlighted-color;
     cursor: pointer;
+  }
+
+  &__bar-element-start {
+    margin-left: auto;
   }
 
   &__transition-enter {

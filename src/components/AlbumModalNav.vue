@@ -28,12 +28,17 @@
               size="2x"
             />
           </div>
-          <div class="album-modal-nav__bar-element">
+          <div
+            class="album-modal-nav__bar-element album-modal-nav__bar-element-start"
+          >
             <font-awesome-icon
               @click="navigateLeft"
               :icon="['fas', 'arrow-left']"
               size="2x"
             />
+          </div>
+          <div class="album-modal-nav__bar-element">
+            <h2>{{ currentIndex + 1 }} / {{ albumLength }}</h2>
           </div>
         </div>
       </div>
@@ -50,6 +55,8 @@ import { Component, Prop, Watch } from "vue-property-decorator";
 })
 export default class AlbumModal extends Vue {
   @Prop() showImageNav!: boolean;
+  @Prop() albumLength!: number;
+  @Prop() currentIndex!: number;
 
   mounted() {
     window.addEventListener("keydown", e => {

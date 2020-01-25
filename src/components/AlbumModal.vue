@@ -11,6 +11,8 @@
           @close="$emit('close')"
           @toggleShowMetadata="showMetaData = !showMetaData"
           @navigate="handleNavigate"
+          :albumLength="albumLength"
+          :currentIndex="currentIndex"
         />
 
         <div class="album-modal__modal-image" ref="a">
