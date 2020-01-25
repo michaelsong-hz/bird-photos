@@ -43,7 +43,7 @@
         <div class="row" v-if="albumToRender">
           <AlbumImage
             v-for="(imageUrl, index) in imagesToRender[albumToRender]"
-            @click.native="modalIndex = index"
+            @click.native="handleModalOpen(index)"
             :imageUrl="imageUrl"
             :key="index"
           />
@@ -327,6 +327,11 @@ export default class Album extends Vue {
       "/thumbnails/",
       "/images/"
     );
+  }
+
+  handleModalOpen(index: number) {
+    this.$store.commit("setSlideshowActive", false);
+    this.modalIndex = index;
   }
 
   handleNavigate(direction: number) {

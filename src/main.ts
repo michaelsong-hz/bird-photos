@@ -10,7 +10,9 @@ import {
   faWindowClose,
   faInfoCircle,
   faArrowLeft,
-  faArrowRight
+  faArrowRight,
+  faPlay,
+  faPause
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -21,6 +23,8 @@ library.add(faWindowClose);
 library.add(faInfoCircle);
 library.add(faArrowLeft);
 library.add(faArrowRight);
+library.add(faPlay);
+library.add(faPause);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;

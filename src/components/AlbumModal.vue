@@ -3,7 +3,8 @@
     <div class="album-modal__modal-mask" v-hammer:swipe="handleSwipe">
       <div
         class="album-modal__modal-container"
-        @mouseover="handleShowImageNav"
+        @mousedown="handleShowImageNav"
+        @mousemove="handleShowImageNav"
         @mouseleave="showImageNav = false"
       >
         <AlbumModalNav
@@ -44,7 +45,7 @@ declare var EXIF: any;
 
 @Component({
   components: { AlbumModalNav, AlbumModalMetadata },
-  computed: mapState(["showModalMetadata"])
+  computed: mapState(["showModalMetadata", "slideshowActive"])
 })
 export default class AlbumModal extends Vue {
   @Prop({ default: false }) imageLoaded!: boolean;
@@ -56,6 +57,8 @@ export default class AlbumModal extends Vue {
   private showMetaData = false;
   private showImageNav = false;
   private showImageNavTimeout!: number;
+  private slideshowTimeout!: number;
+  private slideshowActive!: boolean;
 
   imageMetaData: any = {
     date: "",
@@ -87,7 +90,9 @@ export default class AlbumModal extends Vue {
       }
     }, 2000);
 
-    this.handleShowImageNav();
+    if (!this.slideshowActive) {
+      this.handleShowImageNav();
+    }
   }
 
   handleShowImageNav() {
@@ -105,6 +110,9 @@ export default class AlbumModal extends Vue {
     // Waits for image to finish loading before getting image metadata
     if (val === true) {
       this.getImageMetadata();
+      if (this.slideshowActive) {
+        this.setSlideshowTimeout();
+      }
     }
   }
 
@@ -141,6 +149,24 @@ export default class AlbumModal extends Vue {
     } else if (direction.direction === 2) {
       this.handleNavigate(1);
     }
+  }
+
+  @Watch("slideshowActive")
+  onSlideshowChange(val: boolean, oldVal: boolean) {
+    // Waits for image to finish loading before getting image metadata
+    if (val === true) {
+      this.setSlideshowTimeout();
+    } else {
+      if (this.slideshowTimeout) {
+        clearTimeout(this.slideshowTimeout);
+      }
+    }
+  }
+
+  setSlideshowTimeout() {
+    this.slideshowTimeout = setTimeout(() => {
+      this.$emit("navigate", 1);
+    }, 5000);
   }
 }
 </script>

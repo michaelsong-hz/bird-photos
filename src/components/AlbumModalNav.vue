@@ -28,12 +28,26 @@
               size="2x"
             />
           </div>
+          <div class="album-modal-nav__bar-element">
+            <font-awesome-icon
+              @click="navigateLeft"
+              :icon="['fas', 'arrow-left']"
+              size="2x"
+            />
+          </div>
           <div
             class="album-modal-nav__bar-element album-modal-nav__bar-element-start"
           >
             <font-awesome-icon
-              @click="navigateLeft"
-              :icon="['fas', 'arrow-left']"
+              v-if="slideshowActive"
+              @click="$store.commit('toggleSlideshowActive')"
+              :icon="['fas', 'pause']"
+              size="2x"
+            />
+            <font-awesome-icon
+              v-else
+              @click="$store.commit('toggleSlideshowActive')"
+              :icon="['fas', 'play']"
               size="2x"
             />
           </div>
@@ -49,9 +63,11 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
+import { mapState } from "vuex";
 
 @Component({
-  components: {}
+  components: {},
+  computed: mapState(["slideshowActive"])
 })
 export default class AlbumModal extends Vue {
   @Prop() showImageNav!: boolean;
