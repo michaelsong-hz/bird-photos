@@ -53,6 +53,7 @@ export default class AlbumModal extends Vue {
   @Prop({ default: false }) disableAnimations!: boolean;
   @Prop() albumLength!: number;
   @Prop() currentIndex!: number;
+  @Prop() nextImage!: string;
 
   private showMetaData = false;
   private showImageNav = false;
@@ -113,6 +114,13 @@ export default class AlbumModal extends Vue {
       if (this.slideshowActive) {
         this.setSlideshowTimeout();
       }
+
+      // Preload the next image
+      setTimeout(() => {
+        let nextImg = new Image();
+        nextImg.crossOrigin = "anonymous";
+        nextImg.src = this.nextImage;
+      }, 800);
     }
   }
 

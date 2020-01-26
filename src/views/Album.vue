@@ -11,6 +11,7 @@
       :currentIndex="modalIndex"
       :albumLength="imagesToRender[albumToRender].length"
       :disableAnimations="disableModalAnimations"
+      :nextImage="nextImageToLoad"
     >
       <!-- Add "crossorigin='anonymous'" to solve Chrome CORS error https://stackoverflow.com/a/47359958 -->
       <img
@@ -329,13 +330,19 @@ export default class Album extends Vue {
     );
   }
 
+  get nextImageToLoad() {
+    return this.imagesToRender[this.albumToRender][
+      this.calculateIndex(this.modalIndex, 1)
+    ].replace("/thumbnails/", "/images/");
+  }
+
   handleModalOpen(index: number) {
     this.$store.commit("setSlideshowActive", false);
     this.modalIndex = index;
   }
 
   handleNavigate(direction: number) {
-    // Hack to re-initialize EXIF.js by reloading the component,
+    // Hack to re-initialize EXIF.js by reloading the modal,
     // otherwise EXIF.js always shows old EXIF data
     this.disableModalAnimations = true;
     this.modalImageLoaded = false;
@@ -343,20 +350,25 @@ export default class Album extends Vue {
 
     this.modalIndex = -1;
     setTimeout(() => {
-      if (tempModalIndex + direction <= -1) {
-        this.modalIndex = this.imagesToRender[this.albumToRender].length - 1;
-      } else if (
-        tempModalIndex + direction >=
-        this.imagesToRender[this.albumToRender].length
-      ) {
-        this.modalIndex = 0;
-      } else {
-        this.modalIndex = tempModalIndex + direction;
-      }
+      this.modalIndex = this.calculateIndex(tempModalIndex, direction);
     }, 1);
     setTimeout(() => {
       this.disableModalAnimations = false;
     }, 1);
+  }
+
+  // Prevents index error on @albumToRender by returning the proper index if @increment is added to @currentIndex.
+  calculateIndex(currentIndex: number, increment: number) {
+    if (currentIndex + increment <= -1) {
+      return this.imagesToRender[this.albumToRender].length - 1;
+    } else if (
+      currentIndex + increment >=
+      this.imagesToRender[this.albumToRender].length
+    ) {
+      return 0;
+    } else {
+      return currentIndex + increment;
+    }
   }
 }
 </script>
