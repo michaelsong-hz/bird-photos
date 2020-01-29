@@ -35,32 +35,32 @@ export default class AlbumsList extends Vue {
     [
       "Featured Album",
       "/albums/featured",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2019/A26I8703.jpg"
+      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2019/A26I8703.jpg`
     ],
     [
       "2020 Album",
       "/albums/2020",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2020/A26I1420-1.jpg"
+      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2020/A26I1420-1.jpg`
     ],
     [
       "2019 Album",
       "/albums/2019",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2019/A26I3687.jpg"
+      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2019/A26I3687.jpg`
     ],
     [
       "2018 Album",
       "/albums/2018",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2018/A26I1420.jpg"
+      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2018/A26I1420.jpg`
     ],
     [
       "2017 Album",
       "/albums/2017",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2017/1d88c86ee4cb1ca85f506153885e7335.jpg"
+      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2017/1d88c86ee4cb1ca85f506153885e7335.jpg`
     ],
     [
       "2016 Album",
       "/albums/2016",
-      "https://bird-created.s3.amazonaws.com/thumbnails/albums/2016/HL2A6053-1.jpg"
+      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2016/HL2A6053-1.jpg`
     ]
   ];
 
