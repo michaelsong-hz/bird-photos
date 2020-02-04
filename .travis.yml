@@ -8,7 +8,7 @@ deploy:
   access_key_id: AKIAIGM46PNS52MJ26IQ
   secret_access_key:
     secure: aVlL/9IYE7Hctu/JMbPgRwXDxeIkGtcBynjxjWieN3SXsY9GXcuHxkP4KJFPg7ljs8F61Tw/KW700KfSzpuRojn2pw1qDEiCmU7vC8CUTXx7Rn6Y/QKEY3u6p/Q8P3EPLwAD2clhhHPZbLxi7Y/wXnqUTmcG81g12d5SxZxAIMm4MsgTsEbOSluqIYqNIH1AjROQsPQwzrXqTlndhE2FcOolSO+Ca8G0MCDlGqIobvaHkFJPnXQjE5F7D3X5eMvJUJbRj2/jsBrMlEmfjZ1QpYCVl0td4WR2HUGgmLQNtBhakhT7mqILifko1OfZgGNsjQvxKKnpARCcqotLeuGtlAE6vv6GHNPbnSoVqoD3V1Jm7y2/PKgzfx/YJnOnX41xFSzsrR8crtprUt5j8gBBA7kGP6yxJDt5u+Otb7gTx6E/N+usOrWirscu2eHjDO1D+6Pjj96KhZH1P0FDwRmRXdTzxqN8gCsxSxTHHNgzSd0D8Kf21Y/uFa8jxesENXxMM2F0ZiUyW9V/lOsVbpmP4qIyF3CijH8E1BRjLmdX+SwSxFaPEU3Z2E6h569JJ/I4cwrVmcjPtMQThcDDoyBFI8viG3G78dPDp4YDQsHW1OQgRf+awLZ0VJuX4OsAoBXHN/fK+uRTUCbhAlwubF3eTF3Fibz1YhL/s/zk00vQM4U=
-  bucket: drqingsong.com
+  bucket: eqsong.com
   local-dir: dist
   skip_cleanup: true
   on:
