@@ -3,6 +3,7 @@
 import { register } from "register-service-worker";
 
 if (process.env.NODE_ENV === "production") {
+  var refreshing: boolean;
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
       console.log(
@@ -21,9 +22,9 @@ if (process.env.NODE_ENV === "production") {
     },
     updated() {
       console.log("New content is available. Refreshing...");
-      setTimeout(() => {
-        window.location.reload(true);
-      }, 1000);
+      if (refreshing) return;
+      refreshing = true;
+      window.location.reload();
     },
     offline() {
       console.log(
