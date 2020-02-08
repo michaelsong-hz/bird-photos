@@ -1,6 +1,10 @@
 <template>
   <transition name="album-modal__modal" appear>
-    <div class="album-modal__modal-mask" v-hammer:swipe="handleSwipe">
+    <div
+      class="album-modal__modal-mask"
+      id="album-modal"
+      v-hammer:swipe="handleSwipe"
+    >
       <div
         class="album-modal__modal-container"
         @mousedown="handleShowImageNav"
@@ -40,6 +44,8 @@ import { mapState } from "vuex";
 
 import AlbumModalNav from "@/components/AlbumModalNav.vue";
 import AlbumModalMetadata from "@/components/AlbumModalMetadata.vue";
+
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 declare var EXIF: any;
 
@@ -94,6 +100,16 @@ export default class AlbumModal extends Vue {
     if (!this.slideshowActive) {
       this.handleShowImageNav();
     }
+
+    // Disable page scrolling except for in the modal
+    let albumModal = document.querySelector("#album-modal");
+    if (albumModal) {
+      disableBodyScroll(albumModal);
+    }
+  }
+
+  beforeDestroy() {
+    clearAllBodyScrollLocks();
   }
 
   handleShowImageNav() {
