@@ -1,9 +1,7 @@
 <template>
   <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
-    <div class="box-shadow album-image">
-      <div class="album-image__holder">
-        <img class="card-img" alt="bird image" :src="imageUrl" />
-      </div>
+    <div class="card album-image__holder">
+      <img class="card-img" alt="bird image" :src="imageUrl" />
     </div>
   </div>
 </template>
