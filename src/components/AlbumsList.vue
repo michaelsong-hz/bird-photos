@@ -8,7 +8,7 @@
 
     <div class="container">
       <div class="row">
-        <AlbumImage
+        <AlbumsImage
           v-for="(albumInfo, index) in albumsToRender"
           @click.native="handleNavigate(albumInfo[1])"
           :imageUrl="albumInfo[2]"
@@ -23,11 +23,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import AlbumImage from "@/components/AlbumImage.vue";
+import AlbumsImage from "@/components/AlbumsImage.vue";
 
 @Component({
   components: {
-    AlbumImage
+    AlbumsImage
   }
 })
 export default class AlbumsList extends Vue {

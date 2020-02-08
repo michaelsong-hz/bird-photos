@@ -1,5 +1,5 @@
 <template>
-  <main role="main">
+  <main class="album-view" role="main">
     <AlbumModal
       v-if="modalIndex !== -1"
       @close="
@@ -23,9 +23,9 @@
       />
     </AlbumModal>
 
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center mb-2">
       <div class="container">
-        <h1 class="jumbotron-heading">{{ albumTitle }} Album</h1>
+        <h1 class="display-5">{{ albumTitle }} Album</h1>
         <!-- <p class="lead text-muted">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
           venenatis placerat erat eget commodo. Maecenas non mi ipsum. Morbi
@@ -39,8 +39,8 @@
       </div>
     </section>
 
-    <div class="album py-5 bg-light">
-      <div class="container">
+    <div class="album pb-5 bg-light">
+      <div class="container album-view__container">
         <div class="row" v-if="albumToRender">
           <AlbumImage
             v-for="(imageUrl, index) in imagesToRender[albumToRender]"
