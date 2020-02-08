@@ -2,10 +2,7 @@
   <main class="album-view" role="main">
     <AlbumModal
       v-if="modalIndex !== -1"
-      @close="
-        modalIndex = -1;
-        modalImageLoaded = false;
-      "
+      @close="handleModalClose"
       @navigate="handleNavigate"
       :imageLoaded="modalImageLoaded"
       :currentIndex="modalIndex"
@@ -55,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
 import AlbumImage from "@/components/AlbumImage.vue";
 import AlbumModal from "@/components/AlbumModal.vue";
@@ -321,6 +318,25 @@ export default class Album extends Vue {
     let exifScript = document.createElement("script");
     exifScript.setAttribute("src", "https://cdn.jsdelivr.net/npm/exif-js");
     document.head.appendChild(exifScript);
+
+    if ("modalIndex" in this.$route.params) {
+      this.modalIndex = parseInt(this.$route.params.modalIndex) - 1;
+    }
+  }
+
+  // Handles required changes when using forward/back buttons to open and close the modal within the Album component as it doesn't re-render due to being the same component.
+  @Watch("$route")
+  onSameComponentRouteChange(to: any, from: any) {
+    // If opening modal (but not during slideshow)
+    if ("modalIndex" in to.params && !("modalIndex" in from.params)) {
+      this.$store.commit("setSlideshowActive", false);
+      this.modalIndex = to.params.modalIndex - 1;
+    }
+    // If closing modal
+    else if ("modalIndex" in from.params && !("modalIndex" in to.params)) {
+      this.modalIndex = -1;
+      this.modalImageLoaded = false;
+    }
   }
 
   get imageToLoad() {
@@ -336,9 +352,18 @@ export default class Album extends Vue {
     ].replace("/thumbnails/", "/images/");
   }
 
-  handleModalOpen(index: number) {
+  handleModalOpen(modalIndex: number) {
     this.$store.commit("setSlideshowActive", false);
-    this.modalIndex = index;
+    this.modalIndex = modalIndex;
+    this.$router.push(
+      `/albums/${this.$route.params.albumName}/slideshow/${modalIndex + 1}`
+    );
+  }
+
+  handleModalClose() {
+    this.modalIndex = -1;
+    this.modalImageLoaded = false;
+    this.$router.push(`/albums/${this.$route.params.albumName}`);
   }
 
   handleNavigate(direction: number) {
@@ -354,6 +379,10 @@ export default class Album extends Vue {
     }, 1);
     setTimeout(() => {
       this.disableModalAnimations = false;
+      this.$router.replace(
+        `/albums/${this.$route.params.albumName}/slideshow/${this.modalIndex +
+          1}`
+      );
     }, 1);
   }
 
