@@ -1,0 +1,74 @@
+[
+  {
+    "url": "thumbnails/albums/Featured/A26I1728.jpg",
+    "metadata": {
+      "date": "2019/02/07",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1000",
+      "ISO" : "100"
+    }
+  },
+  {
+    "url": "thumbnails/albums/2019/A26I8703.jpg",
+    "metadata": {
+      "date": "2019/07/21",
+      "fNum": "4",
+      "fDen": "0",
+      "eNum": "1",
+      "eDen": "4000",
+      "ISO" : "1250"
+    }
+  },  {
+    "url": "thumbnails/albums/Featured/A26I3685-1.jpg",
+    "metadata": {
+      "date": "",
+      "fNum": "",
+      "fDen": "",
+      "eNum": "",
+      "eDen": "",
+      "ISO" : ""
+    }
+  },  {
+    "url": "thumbnails/albums/2019/A26I3685-2.jpg",
+    "metadata": {
+      "date": "",
+      "fNum": "",
+      "fDen": "",
+      "eNum": "",
+      "eDen": "",
+      "ISO" : ""
+    }
+  },  {
+    "url": "thumbnails/albums/2018/A26I1420.jpg",
+    "metadata": {
+      "date": "",
+      "fNum": "",
+      "fDen": "",
+      "eNum": "",
+      "eDen": "",
+      "ISO" : ""
+    }
+  },  {
+    "url": "thumbnails/albums/2018/A26I6705.jpg",
+    "metadata": {
+      "date": "",
+      "fNum": "",
+      "fDen": "",
+      "eNum": "",
+      "eDen": "",
+      "ISO" : ""
+    }
+  },  {
+    "url": "thumbnails/albums/2020/A26I9555.jpg",
+    "metadata": {
+      "date": "",
+      "fNum": "",
+      "fDen": "",
+      "eNum": "",
+      "eDen": "",
+      "ISO" : ""
+    }
+  }
+]

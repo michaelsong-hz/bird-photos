@@ -28,10 +28,7 @@
         :name="disableAnimations ? '' : 'album-modal-metadata__wrapper'"
         appear
       >
-        <AlbumModalMetadata
-          v-if="showModalMetadata === true"
-          :imageMetaData="imageMetaData"
-        />
+        <AlbumModalMetadata v-if="showModalMetadata === true" />
       </transition>
     </div>
   </transition>
@@ -151,6 +148,12 @@ export default class AlbumModal extends Vue {
         EXIF.getTag(displayedImage, "FNumber").denominator;
       fNumber = Math.round(fNumber * 10) / 10;
 
+      console.log(date);
+      console.log(EXIF.getTag(displayedImage, "FNumber").numerator);
+      console.log(EXIF.getTag(displayedImage, "FNumber").denominator);
+      console.log(EXIF.getTag(displayedImage, "ExposureTime").numerator);
+      console.log(EXIF.getTag(displayedImage, "ExposureTime").denominator);
+      console.log(EXIF.getTag(displayedImage, "ISOSpeedRatings"));
       this.imageMetaData = {
         date: date,
         exposureTimeNumerator: EXIF.getTag(displayedImage, "ExposureTime")
@@ -177,7 +180,7 @@ export default class AlbumModal extends Vue {
 
   @Watch("slideshowActive")
   onSlideshowChange(val: boolean, oldVal: boolean) {
-    // Waits for image to finish loading before getting image metadata
+    // TODO: I think this needs to be deleted
     if (val === true) {
       this.setSlideshowTimeout();
     } else {

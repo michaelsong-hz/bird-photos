@@ -38,11 +38,11 @@
 
     <div class="album pb-5 bg-light">
       <div class="container album-view__container">
-        <div class="row" v-if="albumToRender">
+        <div class="row" v-if="imageData">
           <AlbumImage
-            v-for="(imageUrl, index) in imagesToRender[albumToRender]"
+            v-for="(imageDatum, index) in imageData"
             @click.native="handleModalOpen(index)"
-            :imageUrl="imageUrl"
+            :imageUrl="imageDatum.url"
             :key="index"
           />
         </div>
@@ -303,8 +303,27 @@ export default class Album extends Vue {
     ]
   };
 
-  created() {
+  private imageData: any = [];
+
+  async beforeCreate() {
     if ("albumName" in this.$route.params) {
+      this.imageData = await fetch(
+        `/imageinfo/${this.$route.params.albumName}.json`
+      )
+        .then(response => {
+          if (response.status !== 200) {
+            console.log(
+              "Looks like there was a problem. Status Code: " + response.status
+            );
+            return;
+          }
+          return response.json();
+        })
+        .catch(err => {
+          console.log("Fetch Error :-S", err);
+        });
+      console.log(this.imageData);
+
       this.albumToRender = this.$route.params.albumName;
       let albumTitle: string = this.$route.params.albumName;
       albumTitle = albumTitle.charAt(0).toUpperCase() + albumTitle.slice(1);
@@ -353,6 +372,13 @@ export default class Album extends Vue {
   }
 
   handleModalOpen(modalIndex: number) {
+    this.$store.commit("setModalState", {
+      index: modalIndex,
+      albumLength: 0,
+      nextImage: this.nextImageToLoad,
+      slideshowActive: false
+    });
+    this.$store.commit("setModalMetadata", this.imageData[modalIndex].metadata);
     this.$store.commit("setSlideshowActive", false);
     this.modalIndex = modalIndex;
     this.$router.push(
@@ -367,23 +393,15 @@ export default class Album extends Vue {
   }
 
   handleNavigate(direction: number) {
-    // Hack to re-initialize EXIF.js by reloading the modal,
-    // otherwise EXIF.js always shows old EXIF data
-    this.disableModalAnimations = true;
-    this.modalImageLoaded = false;
-    let tempModalIndex = this.modalIndex;
-
-    this.modalIndex = -1;
-    setTimeout(() => {
-      this.modalIndex = this.calculateIndex(tempModalIndex, direction);
-    }, 1);
-    setTimeout(() => {
-      this.disableModalAnimations = false;
-      this.$router.replace(
-        `/albums/${this.$route.params.albumName}/slideshow/${this.modalIndex +
-          1}`
-      );
-    }, 1);
+    this.modalIndex = this.calculateIndex(this.modalIndex, direction);
+    this.$store.commit(
+      "setModalMetadata",
+      this.imageData[this.modalIndex].metadata
+    );
+    console.log(this.imageData[this.modalIndex].metadata);
+    this.$router.replace(
+      `/albums/${this.$route.params.albumName}/slideshow/${this.modalIndex + 1}`
+    );
   }
 
   // Prevents index error on @albumToRender by returning the proper index if @increment is added to @currentIndex.

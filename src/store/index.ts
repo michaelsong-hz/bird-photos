@@ -6,7 +6,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     showModalMetadata: false,
-    slideshowActive: false
+    slideshowActive: false,
+    modalState: {},
+    modalMetadata: {}
   },
   mutations: {
     toggleShowModelMetadata(state, payload) {
@@ -17,6 +19,12 @@ export default new Vuex.Store({
     },
     setSlideshowActive(state, payload) {
       state.slideshowActive = payload;
+    },
+    setModalState(state, payload) {
+      state.modalState = payload;
+    },
+    setModalMetadata(state, payload) {
+      state.modalMetadata = payload;
     }
   },
   actions: {},
