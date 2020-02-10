@@ -5,14 +5,23 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    showModalMetadata: false,
+    modalIndex: -1,
+    albumLength: -1,
+    nextModalImage: null,
+    modalImageLoaded: false,
     slideshowActive: false,
-    modalState: {},
-    modalMetadata: {}
+    showImageMetadata: false,
+    imageMetadata: {
+      date: "",
+      fNumber: "",
+      exposureTimeNumerator: "",
+      exposureTimeDenominator: "",
+      ISO: ""
+    }
   },
   mutations: {
-    toggleShowModelMetadata(state, payload) {
-      state.showModalMetadata = !state.showModalMetadata;
+    toggleShowImageMetadata(state, payload) {
+      state.showImageMetadata = !state.showImageMetadata;
     },
     toggleSlideshowActive(state, payload) {
       state.slideshowActive = !state.slideshowActive;
@@ -20,11 +29,26 @@ export default new Vuex.Store({
     setSlideshowActive(state, payload) {
       state.slideshowActive = payload;
     },
-    setModalState(state, payload) {
-      state.modalState = payload;
+    navigateModal(state, payload) {
+      state.modalIndex = payload.modalIndex;
+      state.nextModalImage = payload.nextModalImage;
+      state.modalImageLoaded = false;
+      state.imageMetadata = payload.imageMetadata;
     },
-    setModalMetadata(state, payload) {
-      state.modalMetadata = payload;
+    openModal(state, payload) {
+      state.modalIndex = payload.modalIndex;
+      state.albumLength = payload.albumLength;
+      state.nextModalImage = payload.nextModalImage;
+      state.modalImageLoaded = false;
+      state.slideshowActive = false;
+      state.imageMetadata = payload.imageMetadata;
+    },
+    closeModal(state) {
+      state.modalIndex = -1;
+      // TODO: Could add other cleanup code here
+    },
+    modalImageHasLoaded(state) {
+      state.modalImageLoaded = true;
     }
   },
   actions: {},

@@ -9,28 +9,28 @@
         <div class="album-modal-nav__bar-container">
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="$emit('close')"
+              @click="handleClose"
               :icon="['fas', 'window-close']"
               size="2x"
             />
           </div>
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="$store.commit('toggleShowModelMetadata')"
+              @click="$store.commit('toggleShowImageMetadata')"
               :icon="['fas', 'info-circle']"
               size="2x"
             />
           </div>
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="navigateRight"
+              @click="handleNavigate(1)"
               :icon="['fas', 'arrow-right']"
               size="2x"
             />
           </div>
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="navigateLeft"
+              @click="handleNavigate(-1)"
               :icon="['fas', 'arrow-left']"
               size="2x"
             />
@@ -52,7 +52,7 @@
             />
           </div>
           <div class="album-modal-nav__bar-element">
-            <h2>{{ currentIndex + 1 }} / {{ albumLength }}</h2>
+            <h2>{{ modalIndex + 1 }} / {{ albumLength }}</h2>
           </div>
         </div>
       </div>
@@ -67,30 +67,49 @@ import { mapState } from "vuex";
 
 @Component({
   components: {},
-  computed: mapState(["slideshowActive"])
+  computed: mapState(["modalIndex", "albumLength", "slideshowActive"])
 })
 export default class AlbumModal extends Vue {
   @Prop() showImageNav!: boolean;
-  @Prop() albumLength!: number;
-  @Prop() currentIndex!: number;
+
+  albumLength!: number;
+  modalIndex!: number;
 
   mounted() {
     window.addEventListener("keydown", e => {
       var key = e.which || e.keyCode;
       if (key === 37) {
-        this.navigateLeft();
+        this.handleNavigate(-1);
       } else if (key === 39) {
-        this.navigateRight();
+        this.handleNavigate(1);
       }
     });
   }
 
-  navigateLeft() {
-    this.$emit("navigate", -1);
+  handleClose() {
+    this.$router.push(`/albums/${this.$route.params.albumName}`);
   }
 
-  navigateRight() {
-    this.$emit("navigate", 1);
+  // TODO: Shared function with AlbumModal.vue, could emit up instead
+  handleNavigate(direction: number) {
+    console.log("nav", direction);
+    this.$router.replace(
+      `/albums/${this.$route.params.albumName}/slideshow/${this.calculateIndex(
+        this.modalIndex,
+        direction
+      ) + 1}`
+    );
+  }
+
+  // TODO: This is the same function as in Album.vue
+  calculateIndex(currentIndex: number, increment: number) {
+    if (currentIndex + increment <= -1) {
+      return this.albumLength - 1;
+    } else if (currentIndex + increment >= this.albumLength) {
+      return 0;
+    } else {
+      return currentIndex + increment;
+    }
   }
 }
 </script>

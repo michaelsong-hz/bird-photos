@@ -39,10 +39,10 @@ import { IImageInfoMeta } from "@/models/IImageInfo.ts";
 
 @Component({
   components: {},
-  computed: mapState(["modalMetadata"])
+  computed: mapState(["imageMetadata"])
 })
 export default class AlbumModalMetadata extends Vue {
-  modalMetadata!: IImageInfoMeta;
+  imageMetadata!: IImageInfoMeta;
 
   imageMetaData = {
     date: "",
@@ -53,10 +53,10 @@ export default class AlbumModalMetadata extends Vue {
   };
 
   created() {
-    this.setMetadata(this.modalMetadata);
+    this.setMetadata(this.imageMetadata);
   }
 
-  @Watch("modalMetadata")
+  @Watch("imageMetadata")
   onImageChange(val: IImageInfoMeta) {
     this.setMetadata(val);
   }

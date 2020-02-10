@@ -1,21 +1,12 @@
 <template>
   <main class="album-view" role="main">
-    <AlbumModal
-      v-if="modalIndex !== -1"
-      @close="handleModalClose"
-      @navigate="handleNavigate"
-      :imageLoaded="modalImageLoaded"
-      :currentIndex="modalIndex"
-      :albumLength="imagesToRender[albumToRender].length"
-      :disableAnimations="disableModalAnimations"
-      :nextImage="nextImageToLoad"
-    >
+    <AlbumModal v-if="modalIndex !== -1">
       <!-- Add "crossorigin='anonymous'" to solve Chrome CORS error https://stackoverflow.com/a/47359958 -->
       <img
         slot="image"
         id="slot-image"
         :src="imageToLoad"
-        @load="modalImageLoaded = true"
+        @load="$store.commit('modalImageHasLoaded')"
         crossorigin="anonymous"
       />
     </AlbumModal>
@@ -53,18 +44,19 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { mapState } from "vuex";
 
 import AlbumImage from "@/components/AlbumImage.vue";
 import AlbumModal from "@/components/AlbumModal.vue";
 
 @Component({
-  components: { AlbumImage, AlbumModal }
+  components: { AlbumImage, AlbumModal },
+  computed: mapState(["modalIndex"])
 })
 export default class Album extends Vue {
   private albumToRender = "";
   private albumTitle = "";
-  private modalIndex: number = -1;
-  private modalImageLoaded: boolean = false;
+  private modalIndex!: number;
   private disableModalAnimations: boolean = false;
 
   private imagesToRender: any = {
@@ -330,31 +322,56 @@ export default class Album extends Vue {
       this.albumTitle = albumTitle;
 
       document.title = `Dr Song's Portfolio - ${albumTitle} Album`;
-    }
-  }
 
-  mounted() {
-    let exifScript = document.createElement("script");
-    exifScript.setAttribute("src", "https://cdn.jsdelivr.net/npm/exif-js");
-    document.head.appendChild(exifScript);
+      if ("modalIndex" in this.$route.params) {
+        // TODO: Refactor this as it shares code with onSameComponentRouteChange()
+        let modalIndex = parseInt(this.$route.params.modalIndex) - 1;
 
-    if ("modalIndex" in this.$route.params) {
-      this.modalIndex = parseInt(this.$route.params.modalIndex) - 1;
+        this.$store.commit("openModal", {
+          modalIndex: modalIndex,
+          albumLength: this.imageData.length,
+          nextModalImage: this.getNextImageToLoad(modalIndex),
+          imageMetadata: this.imageData[modalIndex].metadata
+        });
+        console.log("modal direct visit");
+      }
     }
   }
 
   // Handles required changes when using forward/back buttons to open and close the modal within the Album component as it doesn't re-render due to being the same component.
   @Watch("$route")
   onSameComponentRouteChange(to: any, from: any) {
-    // If opening modal (but not during slideshow)
-    if ("modalIndex" in to.params && !("modalIndex" in from.params)) {
-      this.$store.commit("setSlideshowActive", false);
-      this.modalIndex = to.params.modalIndex - 1;
+    // TODO: It seems that only opening the modal is necessary to be handled here
+    // TODO: Might refactor to hold full image data in store, or to have all image nav handled in this component and have subcomponents emit
+    // If navigating between modal pages
+    if ("modalIndex" in to.params && "modalIndex" in from.params) {
+      let modalIndex = to.params.modalIndex - 1;
+
+      this.$store.commit("navigateModal", {
+        modalIndex: modalIndex,
+        nextModalImage: this.getNextImageToLoad(modalIndex),
+        imageMetadata: this.imageData[modalIndex].metadata
+      });
+      console.log("router navigate in modal");
+    }
+    // If opening modal
+    else if ("modalIndex" in to.params && !("modalIndex" in from.params)) {
+      // this.$store.commit("setSlideshowActive", false);
+      let modalIndex = to.params.modalIndex - 1;
+
+      this.$store.commit("openModal", {
+        modalIndex: modalIndex,
+        albumLength: this.imageData.length,
+        nextModalImage: this.getNextImageToLoad(modalIndex),
+        imageMetadata: this.imageData[modalIndex].metadata
+      });
+      console.log("router open modal");
     }
     // If closing modal
     else if ("modalIndex" in from.params && !("modalIndex" in to.params)) {
-      this.modalIndex = -1;
-      this.modalImageLoaded = false;
+      console.log("router close modal");
+      this.$store.commit("closeModal");
+      // this.modalIndex = -1;
     }
   }
 
@@ -365,42 +382,15 @@ export default class Album extends Vue {
     );
   }
 
-  get nextImageToLoad() {
+  getNextImageToLoad(modalIndex: number) {
     return this.imagesToRender[this.albumToRender][
-      this.calculateIndex(this.modalIndex, 1)
+      this.calculateIndex(modalIndex, 1)
     ].replace("/thumbnails/", "/images/");
   }
 
   handleModalOpen(modalIndex: number) {
-    this.$store.commit("setModalState", {
-      index: modalIndex,
-      albumLength: 0,
-      nextImage: this.nextImageToLoad,
-      slideshowActive: false
-    });
-    this.$store.commit("setModalMetadata", this.imageData[modalIndex].metadata);
-    this.$store.commit("setSlideshowActive", false);
-    this.modalIndex = modalIndex;
     this.$router.push(
       `/albums/${this.$route.params.albumName}/slideshow/${modalIndex + 1}`
-    );
-  }
-
-  handleModalClose() {
-    this.modalIndex = -1;
-    this.modalImageLoaded = false;
-    this.$router.push(`/albums/${this.$route.params.albumName}`);
-  }
-
-  handleNavigate(direction: number) {
-    this.modalIndex = this.calculateIndex(this.modalIndex, direction);
-    this.$store.commit(
-      "setModalMetadata",
-      this.imageData[this.modalIndex].metadata
-    );
-    console.log(this.imageData[this.modalIndex].metadata);
-    this.$router.replace(
-      `/albums/${this.$route.params.albumName}/slideshow/${this.modalIndex + 1}`
     );
   }
 
