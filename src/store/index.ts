@@ -8,7 +8,7 @@ export default new Vuex.Store({
     modalIndex: -1,
     albumLength: -1,
     nextModalImage: null,
-    modalImageLoaded: false,
+    modalImageLoaded: false, // TODO: Maybe this could be in local state instead?
     slideshowActive: false,
     showImageMetadata: false,
     imageMetadata: {

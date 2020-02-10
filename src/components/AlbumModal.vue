@@ -14,7 +14,12 @@
         <AlbumModalNav :showImageNav="showImageNav" />
 
         <div class="album-modal__modal-image" ref="a">
-          <slot name="image" />
+          <img
+            slot="image"
+            id="slot-image"
+            :src="imageToLoad"
+            @load="$store.commit('modalImageHasLoaded')"
+          />
         </div>
       </div>
       <transition name="album-modal-metadata__wrapper" appear>
@@ -46,6 +51,8 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
   ])
 })
 export default class AlbumModal extends Vue {
+  @Prop() imageToLoad!: string;
+
   private modalIndex!: number;
   private albumLength!: number;
   private nextModalImage!: string;

@@ -1,15 +1,6 @@
 <template>
   <main class="album-view" role="main">
-    <AlbumModal v-if="modalIndex !== -1">
-      <!-- Add "crossorigin='anonymous'" to solve Chrome CORS error https://stackoverflow.com/a/47359958 -->
-      <img
-        slot="image"
-        id="slot-image"
-        :src="imageToLoad"
-        @load="$store.commit('modalImageHasLoaded')"
-        crossorigin="anonymous"
-      />
-    </AlbumModal>
+    <AlbumModal v-if="modalIndex !== -1" :imageToLoad="imageToLoad" />
 
     <section class="jumbotron text-center mb-2">
       <div class="container">
