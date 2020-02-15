@@ -68,10 +68,6 @@ export default class AlbumModal extends Vue {
   private slideshowTimeout!: number;
 
   mounted() {
-    if (!this.slideshowActive) {
-      this.handleShowImageNav();
-    }
-
     // Disable page scrolling except for in the modal
     let albumModal = document.querySelector("#album-modal");
     if (albumModal) {
