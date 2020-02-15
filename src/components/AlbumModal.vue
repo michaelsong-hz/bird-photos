@@ -17,7 +17,7 @@
           <img
             slot="image"
             id="slot-image"
-            :src="imageToLoad"
+            :src="getImageUrlWrapper()"
             @load="$store.commit('modalImageHasLoaded')"
           />
         </div>
@@ -32,46 +32,40 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 import AlbumModalNav from "@/components/AlbumModalNav.vue";
 import AlbumModalMetadata from "@/components/AlbumModalMetadata.vue";
+import { getImageUrl } from "@/utils/Utils";
+import { ImageTypes } from "@/utils/Constants";
+import { IImageInfo } from "../models/IImageInfo";
 
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 @Component({
   components: { AlbumModalNav, AlbumModalMetadata },
-  computed: mapState([
-    "modalIndex",
-    "albumLength",
-    "nextModalImage",
-    "modalImageLoaded",
-    "slideshowActive",
-    "showImageMetadata"
-  ])
+  computed: {
+    ...mapState([
+      "modalIndex",
+      "modalImageLoaded",
+      "slideshowActive",
+      "showImageMetadata",
+      "imageData"
+    ]),
+    ...mapGetters(["nextModalImage"])
+  }
 })
 export default class AlbumModal extends Vue {
-  @Prop() imageToLoad!: string;
-
   private modalIndex!: number;
-  private albumLength!: number;
-  private nextModalImage!: string;
   private modalImageLoaded!: boolean;
   private slideshowActive!: boolean;
   private showImageMetadata!: boolean;
+  private imageData!: IImageInfo[];
+  private nextModalImage!: string;
 
-  private showMetaData = false;
   private showImageNav = false;
   private showImageNavTimeout!: number;
   private slideshowTimeout!: number;
-
-  imageMetaData: any = {
-    date: "",
-    exposureTimeDenominator: 0,
-    exposureTimeNumerator: 0,
-    fNumber: "0.0",
-    ISO: 0
-  };
 
   mounted() {
     if (!this.slideshowActive) {
@@ -83,10 +77,18 @@ export default class AlbumModal extends Vue {
     if (albumModal) {
       disableBodyScroll(albumModal);
     }
+
+    window.addEventListener("keydown", this.handleKeyboardNavigate);
   }
 
   beforeDestroy() {
+    clearTimeout(this.slideshowTimeout);
     clearAllBodyScrollLocks();
+    window.removeEventListener("keydown", this.handleKeyboardNavigate);
+  }
+
+  getImageUrlWrapper() {
+    return getImageUrl(ImageTypes.Images, this.imageData[this.modalIndex].url);
   }
 
   handleShowImageNav() {
@@ -110,19 +112,26 @@ export default class AlbumModal extends Vue {
       // Preload the next image
       setTimeout(() => {
         let nextImg = new Image();
-        nextImg.crossOrigin = "anonymous";
         nextImg.src = this.nextModalImage;
       }, 800);
     }
   }
 
   handleNavigate(direction: number) {
-    this.$router.replace(
-      `/albums/${this.$route.params.albumName}/slideshow/${this.calculateIndex(
-        this.modalIndex,
-        direction
-      ) + 1}`
-    );
+    this.$store.commit("navigateModal", {
+      direction: direction,
+      router: this.$router,
+      route: this.$route
+    });
+  }
+
+  handleKeyboardNavigate(e: any) {
+    var key = e.which || e.keyCode;
+    if (key === 37) {
+      this.handleNavigate(-1);
+    } else if (key === 39) {
+      this.handleNavigate(1);
+    }
   }
 
   handleSwipe(direction: any) {
@@ -133,9 +142,9 @@ export default class AlbumModal extends Vue {
     }
   }
 
+  // When the slideshow is started or stopped
   @Watch("slideshowActive")
-  onSlideshowChange(val: boolean, oldVal: boolean) {
-    // TODO: I think this needs to be deleted
+  onSlideshowActiveChange(val: boolean, oldVal: boolean) {
     if (val === true) {
       this.setSlideshowTimeout();
     } else {
@@ -149,17 +158,6 @@ export default class AlbumModal extends Vue {
     this.slideshowTimeout = setTimeout(() => {
       this.handleNavigate(1);
     }, 5000);
-  }
-
-  // TODO: This is the same function as in Album.vue
-  calculateIndex(currentIndex: number, increment: number) {
-    if (currentIndex + increment <= -1) {
-      return this.albumLength - 1;
-    } else if (currentIndex + increment >= this.albumLength) {
-      return 0;
-    } else {
-      return currentIndex + increment;
-    }
   }
 }
 </script>

@@ -1,23 +1,19 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import { ImageTypes } from "@/utils/Constants";
+import { calculateIndex, getImageUrl } from "@/utils/Utils";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     modalIndex: -1,
-    albumLength: -1,
-    nextModalImage: null,
     modalImageLoaded: false, // TODO: Maybe this could be in local state instead?
     slideshowActive: false,
     showImageMetadata: false,
-    imageMetadata: {
-      date: "",
-      fNumber: "",
-      exposureTimeNumerator: "",
-      exposureTimeDenominator: "",
-      ISO: ""
-    }
+    imageData: [],
+    modalDirectVisit: false
   },
   mutations: {
     toggleShowImageMetadata(state, payload) {
@@ -30,25 +26,46 @@ export default new Vuex.Store({
       state.slideshowActive = payload;
     },
     navigateModal(state, payload) {
-      state.modalIndex = payload.modalIndex;
-      state.nextModalImage = payload.nextModalImage;
+      const router = payload.router;
+      let modalIndex = calculateIndex(
+        state.modalIndex,
+        payload.direction,
+        state.imageData.length
+      );
+      state.modalIndex = modalIndex;
+      router.replace(
+        `/albums/${payload.route.params.albumName}/slideshow/${modalIndex + 1}`
+      );
       state.modalImageLoaded = false;
-      state.imageMetadata = payload.imageMetadata;
     },
     openModal(state, payload) {
       state.modalIndex = payload.modalIndex;
-      state.albumLength = payload.albumLength;
-      state.nextModalImage = payload.nextModalImage;
       state.modalImageLoaded = false;
       state.slideshowActive = false;
-      state.imageMetadata = payload.imageMetadata;
     },
     closeModal(state) {
       state.modalIndex = -1;
-      // TODO: Could add other cleanup code here
+      state.modalImageLoaded = false;
+      state.slideshowActive = false;
     },
     modalImageHasLoaded(state) {
       state.modalImageLoaded = true;
+    },
+    setImageData(state, payload) {
+      state.imageData = payload.imageData;
+    },
+    setModalDirectVisit(state, payload) {
+      state.modalDirectVisit = payload.modalDirectVisit;
+    }
+  },
+  getters: {
+    nextModalImage: (state: any) => {
+      return getImageUrl(
+        ImageTypes.Images,
+        state.imageData[
+          calculateIndex(state.modalIndex, 1, state.imageData.length)
+        ].url
+      );
     }
   },
   actions: {},

@@ -35,14 +35,15 @@ import Vue from "vue";
 import { Component, Watch, Prop } from "vue-property-decorator";
 import { mapState } from "vuex";
 
-import { IImageInfoMeta } from "@/models/IImageInfo.ts";
+import { IImageInfo, IImageInfoMeta } from "@/models/IImageInfo.ts";
 
 @Component({
   components: {},
-  computed: mapState(["imageMetadata"])
+  computed: mapState(["modalIndex", "imageData"])
 })
 export default class AlbumModalMetadata extends Vue {
-  imageMetadata!: IImageInfoMeta;
+  modalIndex!: number;
+  imageData!: IImageInfo[];
 
   imageMetaData = {
     date: "",
@@ -53,12 +54,12 @@ export default class AlbumModalMetadata extends Vue {
   };
 
   created() {
-    this.setMetadata(this.imageMetadata);
+    this.setMetadata(this.imageData[this.modalIndex].metadata);
   }
 
-  @Watch("imageMetadata")
-  onImageChange(val: IImageInfoMeta) {
-    this.setMetadata(val);
+  @Watch("modalIndex")
+  onImageChange(val: number) {
+    this.setMetadata(this.imageData[val].metadata);
   }
 
   setMetadata(metadata: IImageInfoMeta) {

@@ -52,7 +52,7 @@
             />
           </div>
           <div class="album-modal-nav__bar-element">
-            <h2>{{ modalIndex + 1 }} / {{ albumLength }}</h2>
+            <h2>{{ modalIndex + 1 }} / {{ imageData.length }}</h2>
           </div>
         </div>
       </div>
@@ -64,52 +64,43 @@
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
 import { mapState } from "vuex";
+import { IImageInfo } from "../models/IImageInfo";
 
 @Component({
   components: {},
-  computed: mapState(["modalIndex", "albumLength", "slideshowActive"])
+  computed: mapState([
+    "modalIndex",
+    "imageData",
+    "slideshowActive",
+    "modalDirectVisit"
+  ])
 })
 export default class AlbumModal extends Vue {
   @Prop() showImageNav!: boolean;
 
-  albumLength!: number;
   modalIndex!: number;
-
-  mounted() {
-    window.addEventListener("keydown", e => {
-      var key = e.which || e.keyCode;
-      if (key === 37) {
-        this.handleNavigate(-1);
-      } else if (key === 39) {
-        this.handleNavigate(1);
-      }
-    });
-  }
+  imageData!: IImageInfo[];
+  modalDirectVisit!: boolean;
 
   handleClose() {
-    this.$router.push(`/albums/${this.$route.params.albumName}`);
-  }
-
-  // TODO: Shared function with AlbumModal.vue, could emit up instead
-  handleNavigate(direction: number) {
-    console.log("nav", direction);
-    this.$router.replace(
-      `/albums/${this.$route.params.albumName}/slideshow/${this.calculateIndex(
-        this.modalIndex,
-        direction
-      ) + 1}`
-    );
-  }
-
-  // TODO: This is the same function as in Album.vue
-  calculateIndex(currentIndex: number, increment: number) {
-    if (currentIndex + increment <= -1) {
-      return this.albumLength - 1;
-    } else if (currentIndex + increment >= this.albumLength) {
-      return 0;
+    if (!this.modalDirectVisit) {
+      // Go back if this isn't the first page visited
+      this.$router.back();
     } else {
-      return currentIndex + increment;
+      // Replace URL with next page if this is the first page visited
+      this.$store.commit("setModalDirectVisit", {
+        modalDirectVisit: false
+      });
+      this.$router.replace(`/albums/${this.$route.params.albumName}`);
     }
+  }
+
+  handleNavigate(direction: number) {
+    this.$store.commit("navigateModal", {
+      direction: direction,
+      router: this.$router,
+      route: this.$route
+    });
   }
 }
 </script>

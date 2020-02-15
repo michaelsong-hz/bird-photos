@@ -1,0 +1,61 @@
+[
+  {
+    "url": "/albums/2016/HL2A6053-1.jpg",
+    "metadata": {
+      "date": "2015-11-29",
+      "fNum": "10",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "400"
+    }
+  },
+  {
+    "url": "/albums/2016/Home .jpg",
+    "metadata": {
+      "date": "2016-03-21",
+      "fNum": "56",
+      "fDen": "10",
+      "eNum": "1",
+      "eDen": "2000",
+      "ISO": "500"
+    }
+  },
+  {
+    "url": "/albums/2016/HL2A0658.JPG",
+    "metadata": {
+      "date": "2016-06-12",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "500",
+      "ISO": "640"
+    }
+  },
+  {
+    "url": "/albums/2016/HL2A1806.JPG",
+    "metadata": {
+      "date": "2016-07-17",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "125",
+      "ISO": "100"
+    }
+  },
+  {
+    "url": "/albums/2016/HL2A9925.JPG",
+    "metadata": {
+      "date": "2016-07-28",
+      "fNum": "11",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "320",
+      "ISO": "160"
+    }
+  },
+  {
+    "url": "/albums/2016/HL2A9972.jpg",
+    "metadata": null
+  }
+]
