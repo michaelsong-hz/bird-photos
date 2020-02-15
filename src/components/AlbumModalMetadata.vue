@@ -63,14 +63,22 @@ export default class AlbumModalMetadata extends Vue {
   }
 
   setMetadata(metadata: IImageInfoMeta) {
-    let fNumber = parseInt(metadata.fNum) / parseInt(metadata.fDen);
-    fNumber = Math.round(fNumber * 10) / 10;
+    if (metadata) {
+      let fNumber = parseInt(metadata.fNum) / parseInt(metadata.fDen);
+      fNumber = Math.round(fNumber * 10) / 10;
 
-    this.imageMetaData.date = metadata.date;
-    this.imageMetaData.fNumber = fNumber.toFixed(1);
-    this.imageMetaData.exposureTimeNumerator = metadata.eNum;
-    this.imageMetaData.exposureTimeDenominator = metadata.eDen;
-    this.imageMetaData.ISO = metadata.ISO;
+      this.imageMetaData.date = metadata.date;
+      this.imageMetaData.fNumber = fNumber.toFixed(1);
+      this.imageMetaData.exposureTimeNumerator = metadata.eNum;
+      this.imageMetaData.exposureTimeDenominator = metadata.eDen;
+      this.imageMetaData.ISO = metadata.ISO;
+    } else {
+      this.imageMetaData.date = "";
+      this.imageMetaData.fNumber = "";
+      this.imageMetaData.exposureTimeNumerator = "";
+      this.imageMetaData.exposureTimeDenominator = "";
+      this.imageMetaData.ISO = "";
+    }
   }
 }
 </script>
