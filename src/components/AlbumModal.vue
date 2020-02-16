@@ -14,7 +14,12 @@
         <AlbumModalNav :showImageNav="showImageNav" />
 
         <div class="album-modal__modal-image" ref="a">
+          <div
+            v-if="modalImageLoaded === false"
+            class="spinner-border album-modal__modal-image-spinner"
+          />
           <img
+            v-show="modalImageLoaded"
             slot="image"
             id="slot-image"
             :src="getImageUrlWrapper()"
