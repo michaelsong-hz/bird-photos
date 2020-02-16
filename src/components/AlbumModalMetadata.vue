@@ -1,14 +1,7 @@
 <template>
   <div class="album-modal-metadata__container">
     <div v-if="imageMetaData['date'] === ''">
-      <div
-        class="album-modal-metadata__container-spinner spinner-grow"
-        role="status"
-        align="center"
-      >
-        <span class="sr-only">Loading...</span>
-      </div>
-      <p>Loading Metadata</p>
+      <p>No image metadata available</p>
     </div>
     <div class="album-modal-metadata__container-contents" v-else>
       <div class="album-modal-metadata__container-element">
@@ -39,12 +32,53 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Component, Prop } from "vue-property-decorator";
+import { Component, Watch, Prop } from "vue-property-decorator";
+import { mapState } from "vuex";
+
+import { IImageInfo, IImageInfoMeta } from "@/models/IImageInfo.ts";
 
 @Component({
-  components: {}
+  components: {},
+  computed: mapState(["modalIndex", "imageData"])
 })
 export default class AlbumModalMetadata extends Vue {
-  @Prop() imageMetaData!: object;
+  modalIndex!: number;
+  imageData!: IImageInfo[];
+
+  imageMetaData = {
+    date: "",
+    fNumber: "",
+    exposureTimeNumerator: "",
+    exposureTimeDenominator: "",
+    ISO: ""
+  };
+
+  created() {
+    this.setMetadata(this.imageData[this.modalIndex].metadata);
+  }
+
+  @Watch("modalIndex")
+  onImageChange(val: number) {
+    this.setMetadata(this.imageData[val].metadata);
+  }
+
+  setMetadata(metadata: IImageInfoMeta) {
+    if (metadata) {
+      let fNumber = parseInt(metadata.fNum) / parseInt(metadata.fDen);
+      fNumber = Math.round(fNumber * 10) / 10;
+
+      this.imageMetaData.date = metadata.date;
+      this.imageMetaData.fNumber = fNumber.toFixed(1);
+      this.imageMetaData.exposureTimeNumerator = metadata.eNum;
+      this.imageMetaData.exposureTimeDenominator = metadata.eDen;
+      this.imageMetaData.ISO = metadata.ISO;
+    } else {
+      this.imageMetaData.date = "";
+      this.imageMetaData.fNumber = "";
+      this.imageMetaData.exposureTimeNumerator = "";
+      this.imageMetaData.exposureTimeDenominator = "";
+      this.imageMetaData.ISO = "";
+    }
+  }
 }
 </script>

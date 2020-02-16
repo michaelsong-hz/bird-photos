@@ -9,16 +9,6 @@
     </section>
 
     <div class="container">
-      <h3>Metadata Information does not work on Safari or iOS</h3>
-      <p>
-        Due to a bug in WebKit's implementation of CORS, Safari or iOS based
-        browsers cannot load image metadata information. Please view this site
-        using Google Chrome or Mozilla Firefox on desktop or Android to see
-        image metadata.
-      </p>
-    </div>
-
-    <div class="container">
       <h3>Some fonts on this page use Font Awesome Icons</h3>
       <p>Copyright (C) 2016 by Dave Gandy</p>
       <p>Author: Dave Gandy</p>

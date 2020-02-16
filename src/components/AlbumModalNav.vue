@@ -9,28 +9,28 @@
         <div class="album-modal-nav__bar-container">
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="$emit('close')"
+              @click="handleClose"
               :icon="['fas', 'window-close']"
               size="2x"
             />
           </div>
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="$store.commit('toggleShowModelMetadata')"
+              @click="$store.commit('toggleShowImageMetadata')"
               :icon="['fas', 'info-circle']"
               size="2x"
             />
           </div>
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="navigateRight"
+              @click="handleNavigate(1)"
               :icon="['fas', 'arrow-right']"
               size="2x"
             />
           </div>
           <div class="album-modal-nav__bar-element">
             <font-awesome-icon
-              @click="navigateLeft"
+              @click="handleNavigate(-1)"
               :icon="['fas', 'arrow-left']"
               size="2x"
             />
@@ -52,7 +52,7 @@
             />
           </div>
           <div class="album-modal-nav__bar-element">
-            <h2>{{ currentIndex + 1 }} / {{ albumLength }}</h2>
+            <h2>{{ modalIndex + 1 }} / {{ imageData.length }}</h2>
           </div>
         </div>
       </div>
@@ -64,33 +64,43 @@
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
 import { mapState } from "vuex";
+import { IImageInfo } from "../models/IImageInfo";
 
 @Component({
   components: {},
-  computed: mapState(["slideshowActive"])
+  computed: mapState([
+    "modalIndex",
+    "imageData",
+    "slideshowActive",
+    "modalDirectVisit"
+  ])
 })
 export default class AlbumModal extends Vue {
   @Prop() showImageNav!: boolean;
-  @Prop() albumLength!: number;
-  @Prop() currentIndex!: number;
 
-  mounted() {
-    window.addEventListener("keydown", e => {
-      var key = e.which || e.keyCode;
-      if (key === 37) {
-        this.navigateLeft();
-      } else if (key === 39) {
-        this.navigateRight();
-      }
+  modalIndex!: number;
+  imageData!: IImageInfo[];
+  modalDirectVisit!: boolean;
+
+  handleClose() {
+    if (!this.modalDirectVisit) {
+      // Go back if this isn't the first page visited
+      this.$router.back();
+    } else {
+      // Replace URL with next page if this is the first page visited
+      this.$store.commit("setModalDirectVisit", {
+        modalDirectVisit: false
+      });
+      this.$router.replace(`/albums/${this.$route.params.albumName}`);
+    }
+  }
+
+  handleNavigate(direction: number) {
+    this.$store.commit("navigateModal", {
+      direction: direction,
+      router: this.$router,
+      route: this.$route
     });
-  }
-
-  navigateLeft() {
-    this.$emit("navigate", -1);
-  }
-
-  navigateRight() {
-    this.$emit("navigate", 1);
   }
 }
 </script>
