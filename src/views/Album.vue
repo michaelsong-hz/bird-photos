@@ -20,7 +20,7 @@
 
     <div class="album pb-5 bg-light">
       <div class="container album-view__container">
-        <div class="row" v-if="imageData">
+        <div class="row">
           <AlbumImage
             v-for="(imageDatum, index) in imageData"
             @click.native="handleModalOpen(index)"
@@ -51,31 +51,37 @@ export default class Album extends Vue {
   private modalIndex!: number;
   private imageData!: IImageInfo[];
 
+  private loading = true;
   private albumTitle = "";
 
-  async beforeCreate() {
-    // Retrieve image URLs and Metadata from JSON file for this album
-    let imageData = await fetch(
-      `/imageinfo/${this.$route.params.albumName}.json`
-    )
-      .then(response => {
-        if (response.status !== 200) {
-          return;
-        }
-        return response.json();
-      })
-      .catch(err => {});
-    this.$store.commit("setImageData", {
-      imageData: imageData
-    });
-
+  beforeCreate() {
     // Set the album and page title
     let albumTitle: string = this.$route.params.albumName;
     albumTitle = albumTitle.charAt(0).toUpperCase() + albumTitle.slice(1);
     this.albumTitle = albumTitle;
     document.title = `Dr Song's Portfolio - ${albumTitle} Album`;
+  }
 
-    // If directly visiting an image in the album
+  async created() {
+    // If directly visiting this view, need to get image URLs
+    // and Metadata from JSON file for this album
+    if (!this.imageData || this.imageData.length <= 0) {
+      let imageData = await fetch(
+        `/imageinfo/${this.$route.params.albumName}.json`
+      )
+        .then(response => {
+          if (response.status !== 200) {
+            return;
+          }
+          return response.json();
+        })
+        .catch(err => {});
+      this.$store.commit("setImageData", {
+        imageData: imageData
+      });
+    }
+
+    // If directly visiting an image in the album, need to open modal
     if ("modalIndex" in this.$route.params) {
       let modalIndex = parseInt(this.$route.params.modalIndex) - 1;
       this.$store.commit("openModal", {
