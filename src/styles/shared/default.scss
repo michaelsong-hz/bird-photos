@@ -5,3 +5,9 @@
   text-align: center;
   color: #2c3e50;
 }
+
+@media (max-width: 575.98px) {
+  h3 {
+    font-size: 1em !important;
+  }
+}

@@ -1,7 +1,8 @@
 <template>
-  <div class="col-md-4">
-    <div class="mb-4 card album-image">
-      <div v-if="title" class="card-header">
+  <!-- <div class="col-md-4"> -->
+  <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+    <div class="card album-image">
+      <div v-if="title" class="card-header album-image__header">
         <h3 class="mb-0">{{ title }}</h3>
       </div>
       <div class="album-image__holder">

@@ -33,32 +33,32 @@ import AlbumsImage from "@/components/AlbumsImage.vue";
 export default class AlbumsList extends Vue {
   albumsToRender = [
     [
-      "Featured Album",
+      "Featured",
       "/albums/featured",
       `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2019/A26I8703.jpg`
     ],
     [
-      "2020 Album",
+      "2020",
       "/albums/2020",
       `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2020/A26I1420-1.jpg`
     ],
     [
-      "2019 Album",
+      "2019",
       "/albums/2019",
       `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2019/A26I3687.jpg`
     ],
     [
-      "2018 Album",
+      "2018",
       "/albums/2018",
       `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2018/A26I1420.jpg`
     ],
     [
-      "2017 Album",
+      "2017",
       "/albums/2017",
       `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2017/1d88c86ee4cb1ca85f506153885e7335.jpg`
     ],
     [
-      "2016 Album",
+      "2016",
       "/albums/2016",
       `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2016/HL2A6053-1.jpg`
     ]
