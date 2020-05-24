@@ -3,6 +3,7 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
+import VueGtag from "vue-gtag";
 import BootstrapVue from "bootstrap-vue";
 import { VueHammer } from "vue2-hammer";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -28,6 +29,13 @@ library.add(faPause);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
+Vue.use(
+  VueGtag,
+  {
+    config: { id: "UA-167448715-1" }
+  },
+  router
+);
 Vue.use(BootstrapVue);
 Vue.use(VueHammer);
 
