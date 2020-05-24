@@ -3,6 +3,8 @@ module.exports = {
     workboxOptions: {
       skipWaiting: true
     },
-    name: "Dr Q Song"
+    name: "Dr Q Song",
+    themeColor: "#E9ECEF",
+    msTileColor: "#FFFFFF"
   }
 };
