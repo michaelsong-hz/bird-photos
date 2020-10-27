@@ -54,15 +54,13 @@ export default class Album extends Vue {
   private loading = true;
   private albumTitle = "";
 
-  beforeCreate() {
+  async created() {
     // Set the album and page title
     let albumTitle: string = this.$route.params.albumName;
     albumTitle = albumTitle.charAt(0).toUpperCase() + albumTitle.slice(1);
     this.albumTitle = albumTitle;
     document.title = `Dr Song's Portfolio - ${albumTitle} Album`;
-  }
 
-  async created() {
     // If directly visiting this view, need to get image URLs
     // and Metadata from JSON file for this album
     if (!this.imageData || this.imageData.length <= 0) {
