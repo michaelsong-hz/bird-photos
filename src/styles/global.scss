@@ -12,6 +12,7 @@
  */
 @import "./shared/variables";
 @import "./shared/default";
+@import "./shared/shared";
 
 // Remove rounded corners from all (bootstrap) cards
 [class*="card"] {

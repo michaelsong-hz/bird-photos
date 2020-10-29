@@ -20,7 +20,36 @@
 
     <div class="album pb-5 bg-light">
       <div class="container album-view__container">
-        <div class="row">
+        <div v-if="loading === true" class="row">
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+          <div class="col-4 p-lg-3 p-md-2 p-sm-2 p-1">
+            <div class="placeholder-image" />
+          </div>
+        </div>
+        <div v-show="loading === false" class="row">
           <AlbumImage
             v-for="(imageDatum, index) in imageData"
             @click.native="handleModalOpen(index)"
@@ -41,7 +70,7 @@ import AlbumImage from "@/components/AlbumImage.vue";
 import AlbumModal from "@/components/AlbumModal.vue";
 import { getImageUrl } from "@/utils/Utils";
 import { ImageTypes } from "@/utils/Constants";
-import { IImageInfo } from "../models/IImageInfo";
+import { IImageInfo, IImageInfoMeta } from "../models/IImageInfo";
 
 @Component({
   components: { AlbumImage, AlbumModal },
@@ -89,6 +118,24 @@ export default class Album extends Vue {
         modalDirectVisit: true
       });
     }
+
+    this.loadImages();
+  }
+
+  async loadImages() {
+    await Promise.all(
+      Array.from(this.imageData).map(
+        async imageDatum => await this.loadImage(imageDatum)
+      )
+    );
+    this.loading = false;
+  }
+
+  @Watch("imageData")
+  onImageDataChange(to: IImageInfo[], from: IImageInfo[]) {
+    if (from.length === 0 && to.length > 0) {
+      this.loadImages();
+    }
   }
 
   // Handles required changes when using forward/back buttons to open and close the modal
@@ -107,6 +154,15 @@ export default class Album extends Vue {
     else if ("modalIndex" in from.params && !("modalIndex" in to.params)) {
       this.$store.commit("closeModal");
     }
+  }
+
+  loadImage(imageDatum: IImageInfo) {
+    return new Promise((resolve, reject) => {
+      const loadImg = new Image();
+      loadImg.src = this.getImageUrlWrapper(imageDatum);
+      loadImg.onload = () => resolve(this.getImageUrlWrapper(imageDatum));
+      loadImg.onerror = err => reject(err);
+    });
   }
 
   handleModalOpen(modalIndex: number) {

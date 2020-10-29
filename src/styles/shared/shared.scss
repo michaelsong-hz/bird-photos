@@ -1,0 +1,33 @@
+.placeholder-image {
+  background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #e9ecef 50%, #ffffff 60%, #ffffff 100%);
+  background-size: 200% !important;
+  padding-bottom: 100%;
+  -webkit-animation: animatePlaceholderBg 1s ease infinite;
+  -moz-animation: animatePlaceholderBg 1s ease infinite;
+  animation: animatePlaceholderBg 3s linear infinite;
+}
+
+@-webkit-keyframes animatePlaceholderBg {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: -400%;
+  }
+}
+@-moz-keyframes animatePlaceholderBg {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: -400%;
+  }
+}
+@keyframes animatePlaceholderBg {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: -400%;
+  }
+}
