@@ -6,5 +6,6 @@ module.exports = {
     name: "Dr Q Song",
     themeColor: "#E9ECEF",
     msTileColor: "#FFFFFF"
-  }
+  },
+  productionSourceMap: false
 };
