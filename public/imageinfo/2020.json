@@ -66,40 +66,7 @@
     }
   },
   {
-    "url": "/albums/2020/A26I0005.jpg",
-    "metadata": {
-      "date": "2020-01-10",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "3000",
-      "ISO": "500"
-    }
-  },
-  {
     "url": "/albums/2020/A26I0009.jpg",
-    "metadata": {
-      "date": "2020-01-10",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "3000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I0014.jpg",
-    "metadata": {
-      "date": "2020-01-10",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "3000",
-      "ISO": "400"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I0011.jpg",
     "metadata": {
       "date": "2020-01-10",
       "fNum": "4",
@@ -121,7 +88,227 @@
     }
   },
   {
-    "url": "/albums/2020/A26I2240.jpg",
+    "url": "/albums/2020/A26I0011.jpg",
+    "metadata": {
+      "date": "2020-01-10",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "500"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0014.jpg",
+    "metadata": {
+      "date": "2020-01-10",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "400"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0061-1.jpg",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "640"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0539.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "56",
+      "fDen": "10",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "320"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0543.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "56",
+      "fDen": "10",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "400"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0544.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "56",
+      "fDen": "10",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "400"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0635.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "56",
+      "fDen": "10",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "1000"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0654.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "56",
+      "fDen": "10",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "400"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0829.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "320"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0830.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "1000"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1067.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "800"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1128.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3000",
+      "ISO": "500"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1279.jpg",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "80",
+      "ISO": "3200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1312.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "80",
+      "ISO": "3200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1313.jpg",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "80",
+      "ISO": "3200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1316.JPG",
+    "metadata": {
+      "date": "2020-01-25",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "80",
+      "ISO": "3200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1596.JPG",
+    "metadata": {
+      "date": "2020-01-26",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "320"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1671.JPG",
+    "metadata": {
+      "date": "2020-01-26",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "400"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1687.JPG",
+    "metadata": {
+      "date": "2020-01-26",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I1746.JPG",
+    "metadata": {
+      "date": "2020-01-26",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "250"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I0005.jpg",
     "metadata": {
       "date": "2020-01-27",
       "fNum": "5",
@@ -132,91 +319,256 @@
     }
   },
   {
-    "url": "/albums/2020/A26I2630.jpg",
+    "url": "/albums/2020/A26I2136.jpg",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2137-1.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2167.jpg",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "320"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2169.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "400"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2187.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "160"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2213.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "250"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2222.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "250"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2239.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "5",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2308-5.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "250"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2309.jpg",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "250"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2505.jpg",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "200"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2565.jpg",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "3200",
+      "ISO": "640"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2577.JPG",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "2500",
+      "ISO": "100"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2581.jpg",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "2500",
+      "ISO": "125"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2582.jpg",
+    "metadata": {
+      "date": "2020-01-27",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "2500",
+      "ISO": "125"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I2649 (2).jpg",
     "metadata": {
       "date": "2020-01-27",
       "fNum": "56",
       "fDen": "10",
       "eNum": "1",
       "eDen": "4000",
-      "ISO": "1250"
+      "ISO": "1000"
     }
   },
   {
-    "url": "/albums/2020/A26I5744[1].jpg",
+    "url": "/albums/2020/A26I2952.JPG",
     "metadata": {
-      "date": "2020-04-14",
+      "date": "2020-01-27",
       "fNum": "4",
       "fDen": "1",
       "eNum": "1",
       "eDen": "2000",
-      "ISO": "500"
+      "ISO": "100"
     }
   },
   {
-    "url": "/albums/2020/A26I5744[1]-2.JPG",
+    "url": "/albums/2020/A26I3126.jpg",
     "metadata": {
-      "date": "2020-04-14",
+      "date": "2020-01-28",
       "fNum": "4",
       "fDen": "1",
       "eNum": "1",
-      "eDen": "2000",
-      "ISO": "640"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5745.jpg",
-    "metadata": {
-      "date": "2020-04-14",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "2000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5755.jpg",
-    "metadata": {
-      "date": "2020-04-14",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "2000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5822.JPG",
-    "metadata": {
-      "date": "2020-04-20",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
+      "eDen": "3200",
       "ISO": "400"
     }
   },
   {
-    "url": "/albums/2020/A26I5864-1.jpg",
+    "url": "/albums/2020/A26I3142-3.jpg",
     "metadata": {
-      "date": "2020-04-20",
+      "date": "2020-01-28",
       "fNum": "4",
       "fDen": "1",
       "eNum": "1",
-      "eDen": "4000",
-      "ISO": "3200"
+      "eDen": "3200",
+      "ISO": "800"
     }
   },
   {
-    "url": "/albums/2020/A26I5864.jpg",
+    "url": "/albums/2020/A26I4823.jpg",
     "metadata": {
-      "date": "2020-04-20",
+      "date": "2020-01-28",
       "fNum": "4",
       "fDen": "1",
       "eNum": "1",
       "eDen": "4000",
-      "ISO": "3200"
+      "ISO": "500"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I4908-1 (2).jpg",
+    "metadata": {
+      "date": "2020-01-28",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "4000",
+      "ISO": "640"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I4919.jpg",
+    "metadata": {
+      "date": "2020-01-28",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "4000",
+      "ISO": "1000"
+    }
+  },
+  {
+    "url": "/albums/2020/A26I4984.jpg",
+    "metadata": {
+      "date": "2020-01-28",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "4000",
+      "ISO": "800"
     }
   },
   {
@@ -231,72 +583,6 @@
     }
   },
   {
-    "url": "/albums/2020/A26I5868.JPG",
-    "metadata": {
-      "date": "2020-04-20",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "3200"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5868-1.jpg",
-    "metadata": {
-      "date": "2020-04-20",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "3200"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5870.JPG",
-    "metadata": {
-      "date": "2020-04-20",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "2500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5870-1.jpg",
-    "metadata": {
-      "date": "2020-04-20",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "2500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5884.jpg",
-    "metadata": {
-      "date": "2020-04-20",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "1250"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I5880.JPG",
-    "metadata": {
-      "date": "2020-04-20",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "1600"
-    }
-  },
-  {
     "url": "/albums/2020/A26I5916.jpg",
     "metadata": {
       "date": "2020-04-21",
@@ -305,17 +591,6 @@
       "eNum": "1",
       "eDen": "1250",
       "ISO": "6400"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I6216.jpg",
-    "metadata": {
-      "date": "2020-04-23",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "2000",
-      "ISO": "3200"
     }
   },
   {
@@ -341,29 +616,7 @@
     }
   },
   {
-    "url": "/albums/2020/A26I6340.jpg",
-    "metadata": {
-      "date": "2020-04-23",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "2500",
-      "ISO": "10000"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I6359.jpg",
-    "metadata": {
-      "date": "2020-04-27",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "800",
-      "ISO": "1000"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I6423.jpg",
+    "url": "/albums/2020/A26I6423-1.jpg",
     "metadata": {
       "date": "2020-04-27",
       "fNum": "4",
@@ -374,7 +627,7 @@
     }
   },
   {
-    "url": "/albums/2020/A26I6423-1.jpg",
+    "url": "/albums/2020/A26I6423.jpg",
     "metadata": {
       "date": "2020-04-27",
       "fNum": "4",
@@ -404,39 +657,6 @@
       "eNum": "1",
       "eDen": "3200",
       "ISO": "3200"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I6735.jpg",
-    "metadata": {
-      "date": "2020-05-05",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "2000",
-      "ISO": "2000"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I6745.jpg",
-    "metadata": {
-      "date": "2020-05-05",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "2000",
-      "ISO": "2000"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I7653.jpg",
-    "metadata": {
-      "date": "2020-05-05",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "2000",
-      "ISO": "2000"
     }
   },
   {
@@ -514,105 +734,6 @@
       "eNum": "1",
       "eDen": "4000",
       "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I8444-1.jpg",
-    "metadata": {
-      "date": "2020-06-06",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I8579.jpg",
-    "metadata": {
-      "date": "2020-06-06",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "800"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I9067.jpg",
-    "metadata": {
-      "date": "2020-06-08",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I9576.JPG",
-    "metadata": {
-      "date": "2020-06-08",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "3200"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I9580.JPG",
-    "metadata": {
-      "date": "2020-06-08",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "640"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I9581-1.jpg",
-    "metadata": {
-      "date": "2020-06-08",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I9581.JPG",
-    "metadata": {
-      "date": "2020-06-08",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I9581-2.jpg",
-    "metadata": {
-      "date": "2020-06-08",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "500"
-    }
-  },
-  {
-    "url": "/albums/2020/A26I9722.jpg",
-    "metadata": {
-      "date": "2020-10-08",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "4000",
-      "ISO": "1250"
     }
   },
   {
