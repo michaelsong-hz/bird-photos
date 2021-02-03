@@ -7,7 +7,7 @@
     </section>
 
     <div class="container">
-      <div class="row">
+      <div class="row album-list__row">
         <AlbumsImage
           v-for="(albumInfo, index) in albumsToRender"
           @click.native="handleNavigate(albumInfo[1])"
