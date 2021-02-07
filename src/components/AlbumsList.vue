@@ -40,7 +40,7 @@ export default class AlbumsList extends Vue {
     [
       "2021",
       "/albums/2021",
-      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2021/A26I1334.jpg`
+      `${process.env.VUE_APP_IMAGE_HOST}thumbnails/albums/2021/A26I3281.jpg`
     ],
     [
       "2020",

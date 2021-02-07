@@ -1,4 +1,3 @@
-
 [
   {
     "url": "/albums/2021/A26I1334.jpg",
@@ -9,28 +8,6 @@
       "eNum": "1",
       "eDen": "2000",
       "ISO": "400"
-    }
-  },
-  {
-    "url": "/albums/2021/A26I1682.jpg",
-    "metadata": {
-      "date": "2020-12-26",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "3200",
-      "ISO": "2000"
-    }
-  },
-  {
-    "url": "/albums/2021/A26I2506.jpg",
-    "metadata": {
-      "date": "2020-12-26",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "3200",
-      "ISO": "6400"
     }
   },
   {
@@ -53,17 +30,6 @@
       "eNum": "1",
       "eDen": "3200",
       "ISO": "2500"
-    }
-  },
-  {
-    "url": "/albums/2021/A26I3685.jpg",
-    "metadata": {
-      "date": "2020-12-26",
-      "fNum": "4",
-      "fDen": "1",
-      "eNum": "1",
-      "eDen": "3200",
-      "ISO": "2000"
     }
   },
   {
@@ -111,36 +77,14 @@
     }
   },
   {
-    "url": "/albums/2021/A26I1277.jpg",
+    "url": "/albums/2021/A26I6804.jpg",
     "metadata": {
-      "date": "2021-01-27",
-      "fNum": "4",
+      "date": "2021-02-01",
+      "fNum": "8",
       "fDen": "1",
       "eNum": "1",
-      "eDen": "2500",
-      "ISO": "1250"
-    }
-  },
-  {
-    "url": "/albums/2021/A26I1479.jpg",
-    "metadata": {
-      "date": "2021-01-28",
-      "fNum": "56",
-      "fDen": "10",
-      "eNum": "1",
-      "eDen": "2000",
+      "eDen": "1250",
       "ISO": "1600"
-    }
-  },
-  {
-    "url": "/albums/2021/A26I1481.jpg",
-    "metadata": {
-      "date": "2021-01-28",
-      "fNum": "56",
-      "fDen": "10",
-      "eNum": "1",
-      "eDen": "2000",
-      "ISO": "2000"
     }
   },
   {
@@ -152,6 +96,116 @@
       "eNum": "1",
       "eDen": "2000",
       "ISO": "1600"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I3050-1.JPG",
+    "metadata": {
+      "date": "2021-02-03",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "2500"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I7203.JPG",
+    "metadata": {
+      "date": "2021-02-03",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "2000",
+      "ISO": "6400"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I8972.jpg",
+    "metadata": {
+      "date": "2021-02-05",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "2500",
+      "ISO": "2500"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I9463.jpg",
+    "metadata": {
+      "date": "2021-02-05",
+      "fNum": "4",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1250",
+      "ISO": "5000"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I9655.JPG",
+    "metadata": {
+      "date": "2021-02-06",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "1250"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I9656.JPG",
+    "metadata": {
+      "date": "2021-02-06",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "1250"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I9657.JPG",
+    "metadata": {
+      "date": "2021-02-06",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "1250"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I9659.JPG",
+    "metadata": {
+      "date": "2021-02-06",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "2000"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I9660.JPG",
+    "metadata": {
+      "date": "2021-02-06",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "2000"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I9664.JPG",
+    "metadata": {
+      "date": "2021-02-06",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "2000"
     }
   }
 ]
