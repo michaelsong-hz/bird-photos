@@ -295,5 +295,49 @@
       "eDen": "1600",
       "ISO": "1250"
     }
+  },
+  {
+    "url": "/albums/2021/A26I0443.jpg",
+    "metadata": {
+      "date": "2021-02-14",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "160"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I0444.jpg",
+    "metadata": {
+      "date": "2021-02-14",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "160"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I0445.jpg",
+    "metadata": {
+      "date": "2021-02-14",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "250"
+    }
+  },
+  {
+    "url": "/albums/2021/A26I0499.jpg",
+    "metadata": {
+      "date": "2021-02-14",
+      "fNum": "8",
+      "fDen": "1",
+      "eNum": "1",
+      "eDen": "1600",
+      "ISO": "160"
+    }
   }
 ]
