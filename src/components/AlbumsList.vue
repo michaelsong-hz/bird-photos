@@ -70,17 +70,9 @@ export default class AlbumsList extends Vue {
   ];
 
   async handleNavigate(path: string) {
-    // Gets image metadata - filename is path .json without "/albums/"
-    let imageData = await fetch(`/imageinfo/${path.substr(8)}.json`)
-      .then(response => {
-        if (response.status !== 200) {
-          return;
-        }
-        return response.json();
-      })
-      .catch(err => {});
+    // Clear previous album image data before navigating to a new album
     this.$store.commit("setImageData", {
-      imageData: imageData
+      imageData: []
     });
     this.$router.push(path);
   }

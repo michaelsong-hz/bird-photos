@@ -90,8 +90,7 @@ export default class Album extends Vue {
     this.albumTitle = albumTitle;
     document.title = `Dr Song's Portfolio - ${albumTitle} Album`;
 
-    // If directly visiting this view, need to get image URLs
-    // and Metadata from JSON file for this album
+    // Gets images and metadata for this album - filename is path .json without "/albums/"
     if (!this.imageData || this.imageData.length <= 0) {
       let imageData = await fetch(
         `/imageinfo/${this.$route.params.albumName}.json`
