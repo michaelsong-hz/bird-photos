@@ -31,6 +31,7 @@ export default class Slider extends Vue {
     `${process.env.VUE_APP_IMAGE_HOST}images/homepage/A26I3685.jpg`,
     `${process.env.VUE_APP_IMAGE_HOST}images/homepage/A26I7420-1.jpg`,
     `${process.env.VUE_APP_IMAGE_HOST}images/homepage/A26I6705.jpg`,
+    `${process.env.VUE_APP_IMAGE_HOST}images/homepage/A26I4582 copy.jpg`,
     `${process.env.VUE_APP_IMAGE_HOST}images/homepage/A26I9555.jpg`
   ];
 }
